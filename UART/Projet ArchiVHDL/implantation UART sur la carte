@@ -1,0 +1,35 @@
+une fois que l'émetteur est validé par la simulation
+
+1. écrire une architecture "vide" de l'unité de réception
+
+   il s'agit de donner des valeurs nulles aux 4 signaux de sortie
+
+2. écrire l'architecture de l'UART en connectant les 4 unités
+
+   le signal interne lecture est connecté au rd du RxUnit
+   le signal interne ecriture est connecté au ld du TxUnit
+
+   par contre en entrée du ctrlUnit, se sont rd et wr
+
+   le signal interne registre_controle est en sortie de cette même unité
+
+3. inclure dans le projet les fichiers de la partie 3
+   (echoUnit.vhd, diviseurClk.vhd) et ainsi que les fichiers Nexys2.ucf et
+   Nexys2.vhd
+  
+   Nexys2.vhd est à modifier pour représenter le composant principal sur le
+   FPGA (voir uart_fpga.pdf).
+
+   Ces fichiers permettent de tester l'UART complète mais aussi l'émission
+   seule.
+   
+   En fonctionnant final, un caractère tapé au clavier est
+    - transmis via la liaison RS232 à l'UART implantée sur la carte,
+    - réceptionné par cette UART,
+    - lu par l'unité echoUnit qui joue le rôle du processeur
+    - demandé à être émis par cette unité
+    - transmis par l'UART via la liaison RS232 à l'Hyperterminal
+
+   Pour tester l'émetteur, il suffit de faire reset (bouton le plus à droite);
+   le reset de l'echoUnit lançant l'émission du caractère 'A'
+
