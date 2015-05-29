@@ -1,2 +1,12 @@
-# turnt-adventure-micro-projects
-Nim (java), Cross 'n Lines, bike location (Ada), micro processor (shd), asynchrone transmission/reception unit (vhdl) and sea temperature prediction (Linear algebra)
+# Nim
+Implementation of the Nim game (known as "Jeu des 13 allumettes" in France and famous because of the "Fort Boyard" TV show.
+
+## Launch
+* **compilation**: javac allumettes/Partie.java
+* **Launch**: java allumettes/Partie
+
+## Tests
+* **TestArbitre.java**
+* **TestJeu.java**
+* **TestJoueur.java**
+* **TestPartie.java**
