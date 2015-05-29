@@ -1,6 +1,3 @@
-# turnt-adventure-micro-projects
-Nim (java), Cross 'n Lines, bike location (Ada), micro processor (shd), asynchrone transmission/reception unit (vhdl) and sea temperature prediction (Linear algebra)
-
 Please add in your .cshrc and .login files:
 ===========================================
 source /mnt/n7fs/ens/tp_guivarch/opt/intel/Compiler/11.0/083/bin/ifortvars.csh intel64
