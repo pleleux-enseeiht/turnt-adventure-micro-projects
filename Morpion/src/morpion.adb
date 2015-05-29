@@ -1,8 +1,10 @@
-Procedure Morpion is
-Type CASE est (Vide, Rond, Croix);
-Type DAMIER is array(1..9) of CASE;
-Type JOUEUR est (Rond, Croix);
-Type ETAT_JEU est (EN_COURS, GAGNE, NUL);
+with Ada.Text_IO;
+
+Procedure morpion is
+Type PLACE is (Vide, Rond, Croix);
+Type DAMIER is array(1..9) of PLACE;
+Type JOUEUR is (Rond, Croix);
+Type ETAT_JEU is (EN_COURS, GAGNE, NUL);
 le_damier : DAMIER;
 le_joueur : JOUEUR;
 l_etat : ETAT_JEU;
@@ -15,7 +17,8 @@ l_etat : ETAT_JEU;
 	--préconditions : 
 	--postconditions : 
 	
-	procedure initialiser_jeu (Fle_damier : OUT DAMIER; Fle_joueur : OUT JOUEUR;) is
+	procedure initialiser_jeu (Fle_damier : OUT DAMIER; Fle_joueur : OUT string) is
+	use Ada.Text_IO;
 	begin
 	--initialiser damier
 	For i in 1..9 loop
@@ -32,16 +35,16 @@ l_etat : ETAT_JEU;
 	--préconditions : Fle_damier et Fle_joueur sont initialisé
 	--postconditions : 
 	
-	procedure afficher_jeu (Fle_damier : IN DAMIER; Fle_joueur : IN JOUEUR;) is
+	procedure afficher_jeu (Fle_damier : IN DAMIER; Fle_joueur : IN JOUEUR) is
 	begin
 	--convertir damier en symboles
 	For i in 1..9 loop
 		Case Fle_damier(i) is
-			Rond => damier_carac(i):='o';
-			Croix => damier_carac(i):='x';
-			Autres => damier_carac(i):=' ';
+			when Rond => damier_carac(i):='o';
+			when Croix => damier_carac(i):='x';
+			when others => damier_carac(i):=' ';
 		End case;
-	End loop
+	End loop;
 	--afficher ligne par ligne
 	For i in 0..2 loop
 		--afficher case par case
@@ -49,7 +52,7 @@ l_etat : ETAT_JEU;
 				put(' ');
 				put(damier_carac(i+j));
 				put('|');
-			End loop
+			End loop;
 		new_line;
 		put("-- - --");
 		new_line;
@@ -62,7 +65,7 @@ l_etat : ETAT_JEU;
 	--préconditions : Fle_damier et Fle_joueur sont initialisé
 	--postconditions : 
 	
-	procedure jouer (Fle_damier : IN OUT DAMIER; Fle_joueur : IN JOUEUR; Fl_etat : IN OUT ETAT_JEU;) is
+	procedure jouer (Fle_damier : IN OUT DAMIER; Fle_joueur : IN JOUEUR; Fl_etat : IN OUT ETAT_JEU) is
 	nombre_de_coups : integer; --le nombre de coups joués depuis le début de la partie
 	begin
 	--compter le nombre de coups joués
@@ -80,14 +83,14 @@ l_etat : ETAT_JEU;
 	le_damier(lire(case_a_jouer)):=le_joueur;
 	--déterminer l'état de la partie
 		--éditer l'état de la partie si elle est gagnée
-		if ((le_damier(1)/=Vide and le_damier(1)=le_damier(2) and ledamier(2)=le_damier(3))
-		or(le_damier(4)/=Vide and le_damier(4)=le_damier(5) and le damier(5)=le_damier(6))
-		or(le_damier(7)/=Vide and le_damier(7)=le_damier(8) and le damier(8)=le_damier(9))
-		or(le_damier(1)/=Vide and le_damier(1)=le_damier(5) and le damier(5)=le_damier(9))
-		or(le_damier(7)/=Vide and le_damier(7)=le_damier(5) and le damier(5)=le_damier(3))
-		or(le_damier(1)/=Vide and le_damier(1)=le_damier(4) and le damier(4)=le_damier(7))
-		or(le_damier(2)/=Vide and le_damier(2)=le_damier(5) and le damier(5)=le_damier(8))
-		or(le_damier(3)/=Vide and le_damier(3)=le_damier(6) and le damier(6)=le_damier(9))) then l_etat:=GAGNE;
+		if ((le_damier(1)/=Vide and le_damier(1)=le_damier(2) and le_damier(2)=le_damier(3))
+		or(le_damier(4)/=Vide and le_damier(4)=le_damier(5) and le_damier(5)=le_damier(6))
+		or(le_damier(7)/=Vide and le_damier(7)=le_damier(8) and le_damier(8)=le_damier(9))
+		or(le_damier(1)/=Vide and le_damier(1)=le_damier(5) and le_damier(5)=le_damier(9))
+		or(le_damier(7)/=Vide and le_damier(7)=le_damier(5) and le_damier(5)=le_damier(3))
+		or(le_damier(1)/=Vide and le_damier(1)=le_damier(4) and le_damier(4)=le_damier(7))
+		or(le_damier(2)/=Vide and le_damier(2)=le_damier(5) and le_damier(5)=le_damier(8))
+		or(le_damier(3)/=Vide and le_damier(3)=le_damier(6) and le_damier(6)=le_damier(9))) then l_etat:=GAGNE;
 		--éditer l'état de la partie si elle est nulle
 		else if nombre_de_coups=9 then l_etat:=NUL;
 			else NULL;
