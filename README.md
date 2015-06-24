@@ -7,6 +7,7 @@ Nim (java), Morpion, bike location system (Ada), asynchrone transmission/recepti
 * **Bike location system:** bike location system simulating different bike stations in Ada.
 * **UART:** Implementation of an Asynchrone Unit of Reception/Transmission.
 * **Sea temperature:** Using of linear algebra to predict the sea temperature.
+* **DC-motor:** Modelisation and control of an electromagnetic conversion system (DC motor) using SimuLink.
 
 ## Documentation
 For more details and documentation see the *README.md* files in each micro project folder.
