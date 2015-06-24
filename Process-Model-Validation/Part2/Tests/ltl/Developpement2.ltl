@@ -1,0 +1,72 @@
+# Generated ltl file (Developpement2)
+
+############################
+# Definitions d'operations #
+############################
+prefix ! p = - p;			# Negation
+infix p & q = p /\ q;		# And
+infix p | q = p \/ q;		# Or
+infix q suit p = [](p => <> q); # Sequence
+op finished = Conception_finished & RedactionDoc_finished & Development_finished & RedactionTest_finished & SeCasserLaTete_finished & ETLEcran_finished &  Developpement_finished & Developpement2_finished;
+#########################
+# Proprietes a verifier #
+#########################
+### Partie I
+## General
+	[] (dead => finished);
+	finished => (<> ([] finished));
+	[] ! finished; # non accessible
+	[] ! (Developpement2_finished & !Conception_finished);
+	[] ! (Developpement2_finished & !RedactionDoc_finished);
+	[] ! (Developpement2_finished & !Development_finished);
+	[] ! (Developpement2_finished & !RedactionTest_finished);
+	[] ! (Developpement2_finished & !SeCasserLaTete_finished);
+	[] ! (Developpement2_finished & !ETLEcran_finished);
+	[] ! (Developpement2_finished & !Developpement_finished);
+## Ressources
+	[] (concepteur <= 3) ;
+	[] (redacteur <= 1) ;
+	[] (developpeur <= 2) ;
+	[] (testeur <= 2) ;
+	[] (machine <= 4) ;
+## Regles sur les WorkSequence
+	finished => ([] (RedactionDoc_started => (<> Conception_finished)));
+	finished => ([] (RedactionDoc_started => (<> Conception_finished)));
+	finished => ([] (Development_started => (<> Conception_finished)));
+	finished => ([] (RedactionTest_started => (<> Conception_finished)));
+	finished => ([] (RedactionTest_started => (<> Development_finished)));
+
+# Restitution des ressources
+	finished => (concepteur = 3);
+	finished => (redacteur = 1);
+	finished => (developpeur = 2);
+	finished => (testeur = 2);
+	finished => (machine = 4);
+
+### Partie II
+
+## Decomposition d'une activite
+	finished => (Conception_started suit Developpement_started);
+	finished => (Developpement_finished suit Conception_finished);
+	finished => (RedactionDoc_started suit Developpement_started);
+	finished => (Developpement_finished suit RedactionDoc_finished);
+	finished => (Development_started suit Developpement_started);
+	finished => (Developpement_finished suit Development_finished);
+	finished => (RedactionTest_started suit Developpement_started);
+	finished => (Developpement_finished suit RedactionTest_finished);
+	finished => (SeCasserLaTete_started suit Development_started);
+	finished => (Development_finished suit SeCasserLaTete_finished);
+	finished => (ETLEcran_started suit Development_started);
+	finished => (Development_finished suit ETLEcran_finished);
+## Gestion plus fine des ressources
+# Ressource interne <= Ressource disponible
+	[] (Developpement_testeur_internResource <= 2);
+	[] (Developpement_machine_internResource <= 4);
+	[] (Developpement_developpeur_internResource <= 2);
+	[] (Developpement_redacteur_internResource <= 1);
+	[] (Developpement_concepteur_internResource <= 3);
+	[] (Developpement_ready | Developpement_running | Developpement_inBreak | Developpement_finished | Developpement_running) ;
+	[] (Developpement2_running | Developpement2_finished);
+# p_running suit p_inBreak
+	finished => (Developpement_inBreak => <> Developpement_running);
+

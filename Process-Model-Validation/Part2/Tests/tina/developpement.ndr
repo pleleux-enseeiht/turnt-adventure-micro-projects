@@ -1,0 +1,238 @@
+p 825.0 110.0 Conception_ready 1 n
+t 825.0 150.0 Conception_start 0 0 n
+p 825.0 195.0 Conception_running 0 n
+t 825.0 245.0 Conception_finish 10 16 n
+p 825.0 290.0 Conception_finished 0 n
+p 920.0 150.0 Conception_initial 0 n
+t 920.0 195.0 Conception_beginOnTime 10 10 n
+p 920.0 245.0 Conception_onTime 0 n
+t 920.0 290.0 Conception_isTooLate 6 6 n
+p 920.0 340.0 Conception_tooLate 0 n
+t 985.0 195.0 Conception_isTooEarly 0 0 n
+p 985.0 245.0 Conception_tooEarly 0 n
+p 875.0 175.0 Conception_started 0 n
+p 880.0 45.0 Conception_machine_internResource 0 n
+p 910.0 50.0 Conception_concepteur_internResource 0 n
+p 650.0 35.0 concepteur 3 n
+t 770.0 195.0 Conception_break 0 w n
+p 715.0 195.0 Conception_inBreak 0 n
+t 715.0 150.0 Conception_stopBreak 0 w n
+p 1425.0 450.0 RedactionTest_ready 1 n
+t 1425.0 490.0 RedactionTest_start 0 0 n
+p 1425.0 530.0 RedactionTest_running 0 n
+t 1425.0 570.0 RedactionTest_finish 10 12 n
+p 1425.0 610.0 RedactionTest_finished 0 n
+p 1510.0 490.0 RedactionTest_initial 0 n
+t 1510.0 530.0 RedactionTest_beginOnTime 10 10 n
+p 1510.0 570.0 RedactionTest_onTime 0 n
+t 1510.0 615.0 RedactionTest_isTooLate 2 2 n
+p 1510.0 660.0 RedactionTest_tooLate 0 n
+t 1575.0 530.0 RedactionTest_isTooEarly 0 0 n
+p 1575.0 570.0 RedactionTest_tooEarly 0 n
+p 1470.0 510.0 RedactionTest_started 0 n
+t 1380.0 530.0 RedactionTest_break 0 w n
+p 1335.0 530.0 RedactionTest_inBreak 0 n
+t 1335.0 490.0 RedactionTest_stopBreak ne 0 w n {} ne
+p 1285.0 390.0 testeur 2 n
+p 1475.0 390.0 RedactionTest_machine_internResource 0 n
+p 1505.0 395.0 RedactionTest_testeur_internResource 0 n
+p 860.0 835.0 Development_ready 1 n
+t 860.0 875.0 Development_start 0 0 n
+p 860.0 915.0 Development_running 0 n
+t 860.0 955.0 Development_finish 12 14 n
+p 860.0 995.0 Development_finished 0 n
+p 955.0 875.0 Development_initial 0 n
+t 955.0 915.0 Development_beginOnTime 12 12 n
+p 955.0 955.0 Development_onTime 0 n
+t 1000.0 915.0 Development_isTooEarly 0 0 n
+p 1000.0 955.0 Development_tooEarly 0 n
+t 955.0 995.0 Development_isTooLate 2 2 n
+p 955.0 1040.0 Development_tooLate 0 n
+t 815.0 915.0 Development_break 0 w n
+p 770.0 915.0 Development_inBreak 0 n
+t 770.0 875.0 Development_stopBreak 0 w n
+p 720.0 775.0 developpeur 2 n
+p 910.0 895.0 Development_started 0 n
+p 910.0 775.0 Development_machine_internResource 0 n
+p 940.0 780.0 Development_developpeur_internResource 0 n
+p 310.0 475.0 RedactionDoc_ready 1 n
+t 310.0 515.0 RedactionDoc_start 0 0 n
+p 310.0 555.0 RedactionDoc_running 0 n
+t 310.0 595.0 RedactionDoc_finish 8 12 n
+p 310.0 635.0 RedactionDoc_finished 0 n
+t 265.0 555.0 RedactionDoc_break 0 w n
+p 210.0 555.0 RedactionDoc_inBreak 0 n
+t 210.0 515.0 RedactionDoc_stopBreak 0 w n
+p 170.0 420.0 redacteur 1 n
+p 405.0 515.0 RedactionDoc_initial 0 n
+t 405.0 555.0 RedactionDoc_beginOnTime 8 8 n
+p 405.0 595.0 RedactionDoc_onTime 0 n
+t 405.0 635.0 RedactionDoc_isTooLate 4 4 n
+p 405.0 680.0 RedactionDoc_tooLate 0 n
+p 360.0 535.0 RedactionDoc_started 0 n
+t 450.0 555.0 RedactionDoc_isTooEarly 0 0 n
+p 450.0 595.0 RedactionDoc_tooEarly 0 n
+p 360.0 415.0 RedactionDoc_redacteur_internResource 0 n
+p 390.0 420.0 RedactionDoc_machine_internResource 0 n
+p 125.0 30.0 developpement_initial 1 n
+p 220.0 30.0 developpement_running 1 n
+p 125.0 120.0 developpement_onTime 0 n
+t 125.0 75.0 developpement_beginOnTime 20 20 n
+t 125.0 165.0 developpement_isTooLate 30 30 n
+p 125.0 205.0 developpement_tooLate 0 n
+t 220.0 75.0 developpement_finish 20 50 n
+p 220.0 120.0 developpement_finished 0 n
+t 70.0 75.0 developpement_isTooEarly 0 0 n
+p 70.0 120.0 developpement_tooEarly 0 n
+p 645.0 375.0 machine 4 n
+e developpement_running developpement_finish 1 n
+e RedactionTest_finished developpement_finish ?1 n
+e Development_finished developpement_finish ?1 n
+e RedactionDoc_finished developpement_finish ?1 n
+e Conception_finished developpement_finish ?1 n
+e developpement_finish developpement_finished 1 n
+e developpement_initial developpement_beginOnTime 1 n
+e developpement_running developpement_beginOnTime ?1 n
+e developpement_beginOnTime developpement_onTime 1 n
+e developpement_initial developpement_isTooEarly 1 n
+e developpement_finished developpement_isTooEarly ?1 n
+e developpement_isTooEarly developpement_tooEarly 1 n
+e developpement_onTime developpement_isTooLate 1 n
+e developpement_running developpement_isTooLate ?1 n
+e developpement_isTooLate developpement_tooLate 1 n
+e machine Conception_start 2 n
+e concepteur Conception_start 2 n
+e Conception_ready Conception_start 1 n
+e Conception_start Conception_machine_internResource 2 n
+e Conception_start Conception_concepteur_internResource 2 n
+e Conception_start Conception_initial 1 n
+e Conception_start Conception_running 1 n
+e Conception_start Conception_started 1 n
+e Conception_machine_internResource Conception_finish 2 n
+e Conception_concepteur_internResource Conception_finish 2 n
+e Conception_running Conception_finish 1 n
+e Conception_finish machine 2 n
+e Conception_finish concepteur 2 n
+e Conception_finish Conception_finished 1 n
+e Conception_initial Conception_beginOnTime 1 n
+e Conception_started Conception_beginOnTime ?1 n
+e Conception_beginOnTime Conception_onTime 1 n
+e Conception_initial Conception_isTooEarly 1 n
+e Conception_finished Conception_isTooEarly ?1 n
+e Conception_isTooEarly Conception_tooEarly 1 n
+e Conception_onTime Conception_isTooLate 1 n
+e Conception_started Conception_isTooLate ?1 n
+e Conception_finished Conception_isTooLate ?-1 n
+e Conception_isTooLate Conception_tooLate 1 n
+e Conception_running Conception_break 1 n
+e Conception_break machine 2 n
+e Conception_break concepteur 2 n
+e Conception_break Conception_inBreak 1 n
+e machine Conception_stopBreak 2 n
+e concepteur Conception_stopBreak 2 n
+e Conception_inBreak Conception_stopBreak 1 n
+e Conception_stopBreak Conception_running 1 n
+e machine RedactionDoc_start 1 n
+e redacteur RedactionDoc_start 1 n
+e RedactionDoc_ready RedactionDoc_start 1 n
+e Conception_started RedactionDoc_start ?1 n
+e RedactionDoc_start RedactionDoc_machine_internResource 1 n
+e RedactionDoc_start RedactionDoc_redacteur_internResource 1 n
+e RedactionDoc_start RedactionDoc_initial 1 n
+e RedactionDoc_start RedactionDoc_running 1 n
+e RedactionDoc_start RedactionDoc_started 1 n
+e RedactionDoc_machine_internResource RedactionDoc_finish 1 n
+e RedactionDoc_redacteur_internResource RedactionDoc_finish 1 n
+e RedactionDoc_running RedactionDoc_finish 1 n
+e Conception_finished RedactionDoc_finish ?1 n
+e RedactionDoc_finish machine 1 n
+e RedactionDoc_finish redacteur 1 n
+e RedactionDoc_finish RedactionDoc_finished 1 n
+e RedactionDoc_initial RedactionDoc_beginOnTime 1 n
+e RedactionDoc_started RedactionDoc_beginOnTime ?1 n
+e RedactionDoc_beginOnTime RedactionDoc_onTime 1 n
+e RedactionDoc_initial RedactionDoc_isTooEarly 1 n
+e RedactionDoc_finished RedactionDoc_isTooEarly ?1 n
+e RedactionDoc_isTooEarly RedactionDoc_tooEarly 1 n
+e RedactionDoc_onTime RedactionDoc_isTooLate 1 n
+e RedactionDoc_started RedactionDoc_isTooLate ?1 n
+e RedactionDoc_finished RedactionDoc_isTooLate ?-1 n
+e RedactionDoc_isTooLate RedactionDoc_tooLate 1 n
+e RedactionDoc_running RedactionDoc_break 1 n
+e RedactionDoc_break machine 1 n
+e RedactionDoc_break redacteur 1 n
+e RedactionDoc_break RedactionDoc_inBreak 1 n
+e machine RedactionDoc_stopBreak 1 n
+e redacteur RedactionDoc_stopBreak 1 n
+e RedactionDoc_inBreak RedactionDoc_stopBreak 1 n
+e RedactionDoc_stopBreak RedactionDoc_running 1 n
+e machine Development_start 3 n
+e developpeur Development_start 2 n
+e Development_ready Development_start 1 n
+e Conception_finished Development_start ?1 n
+e Development_start Development_machine_internResource 3 n
+e Development_start Development_developpeur_internResource 2 n
+e Development_start Development_initial 1 n
+e Development_start Development_running 1 n
+e Development_start Development_started 1 n
+e Development_machine_internResource Development_finish 3 n
+e Development_developpeur_internResource Development_finish 2 n
+e Development_running Development_finish 1 n
+e Development_finish machine 3 n
+e Development_finish developpeur 2 n
+e Development_finish Development_finished 1 n
+e Development_initial Development_beginOnTime 1 n
+e Development_started Development_beginOnTime ?1 n
+e Development_beginOnTime Development_onTime 1 n
+e Development_initial Development_isTooEarly 1 n
+e Development_finished Development_isTooEarly ?1 n
+e Development_isTooEarly Development_tooEarly 1 n
+e Development_onTime Development_isTooLate 1 n
+e Development_started Development_isTooLate ?1 n
+e Development_finished Development_isTooLate ?-1 n
+e Development_isTooLate Development_tooLate 1 n
+e Development_running Development_break 1 n
+e Development_break machine 3 n
+e Development_break developpeur 2 n
+e Development_break Development_inBreak 1 n
+e machine Development_stopBreak 3 n
+e developpeur Development_stopBreak 2 n
+e Development_inBreak Development_stopBreak 1 n
+e Development_stopBreak Development_running 1 n
+e machine RedactionTest_start 2 n
+e testeur RedactionTest_start 1 n
+e RedactionTest_ready RedactionTest_start 1 n
+e Conception_started RedactionTest_start ?1 n
+e RedactionTest_start RedactionTest_machine_internResource 2 n
+e RedactionTest_start RedactionTest_testeur_internResource 1 n
+e RedactionTest_start RedactionTest_initial 1 n
+e RedactionTest_start RedactionTest_running 1 n
+e RedactionTest_start RedactionTest_started 1 n
+e RedactionTest_machine_internResource RedactionTest_finish 2 n
+e RedactionTest_testeur_internResource RedactionTest_finish 1 n
+e RedactionTest_running RedactionTest_finish 1 n
+e Development_finished RedactionTest_finish ?1 n
+e RedactionTest_finish machine 2 n
+e RedactionTest_finish testeur 1 n
+e RedactionTest_finish RedactionTest_finished 1 n
+e RedactionTest_initial RedactionTest_beginOnTime 1 n
+e RedactionTest_started RedactionTest_beginOnTime ?1 n
+e RedactionTest_beginOnTime RedactionTest_onTime 1 n
+e RedactionTest_initial RedactionTest_isTooEarly 1 n
+e RedactionTest_finished RedactionTest_isTooEarly ?1 n
+e RedactionTest_isTooEarly RedactionTest_tooEarly 1 n
+e RedactionTest_onTime RedactionTest_isTooLate 1 n
+e RedactionTest_started RedactionTest_isTooLate ?1 n
+e RedactionTest_finished RedactionTest_isTooLate ?-1 n
+e RedactionTest_isTooLate RedactionTest_tooLate 1 n
+e RedactionTest_running RedactionTest_break 1 n
+e RedactionTest_break machine 2 n
+e RedactionTest_break testeur 1 n
+e RedactionTest_break RedactionTest_inBreak 1 n
+e machine RedactionTest_stopBreak 2 n
+e testeur RedactionTest_stopBreak 1 n
+e RedactionTest_inBreak RedactionTest_stopBreak 1 n
+e RedactionTest_stopBreak RedactionTest_running 1 n
+h developpement small
+
+

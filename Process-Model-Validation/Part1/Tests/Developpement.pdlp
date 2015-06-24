@@ -1,0 +1,16 @@
+process Developpement [20,50] {
+	wd Conception [10,16] concepteur:2 machine:2
+	wd RedactionDoc [8,12] redacteur:1 machine:1
+	wd Development [12,14] developpeur:2 machine:3
+	wd RedactionTest [10,12] testeur:1 machine:2
+	ws finishToFinish from Conception to RedactionDoc
+	ws startToStart from Conception to Development
+	ws startToStart from Conception to RedactionTest
+	ws finishToFinish from Development to RedactionTest
+	res concepteur contain 3
+	res redacteur contain 1
+	res developpeur contain 2
+	res testeur contain 2
+	res machine contain 4
+}
+	

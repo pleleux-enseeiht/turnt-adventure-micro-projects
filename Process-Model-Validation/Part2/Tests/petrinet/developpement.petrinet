@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<PetriNet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PetriNet="http://PetriNet" name="developpement">
+  <nodes xsi:type="PetriNet:Place" name="developpement_running" outgoings="//@arcs.0 //@arcs.8 //@arcs.9" marking="1"/>
+  <nodes xsi:type="PetriNet:Place" name="developpement_finished" outgoings="//@arcs.10" incomings="//@arcs.1"/>
+  <nodes xsi:type="PetriNet:Transition" name="developpement_finish" outgoings="//@arcs.1" incomings="//@arcs.0 //@arcs.32 //@arcs.53 //@arcs.74 //@arcs.95" min_time="20" max_time="50"/>
+  <nodes xsi:type="PetriNet:Place" name="developpement_initial" outgoings="//@arcs.2 //@arcs.4" marking="1"/>
+  <nodes xsi:type="PetriNet:Place" name="developpement_onTime" outgoings="//@arcs.6" incomings="//@arcs.5"/>
+  <nodes xsi:type="PetriNet:Place" name="developpement_tooEarly" incomings="//@arcs.3"/>
+  <nodes xsi:type="PetriNet:Place" name="developpement_tooLate" incomings="//@arcs.7"/>
+  <nodes xsi:type="PetriNet:Transition" name="developpement_beginOnTime" outgoings="//@arcs.5" incomings="//@arcs.4 //@arcs.8" min_time="20" max_time="20"/>
+  <nodes xsi:type="PetriNet:Transition" name="developpement_isTooEarly" outgoings="//@arcs.3" incomings="//@arcs.2 //@arcs.10"/>
+  <nodes xsi:type="PetriNet:Transition" name="developpement_isTooLate" outgoings="//@arcs.7" incomings="//@arcs.6 //@arcs.9" min_time="30" max_time="30"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_ready" outgoings="//@arcs.16" marking="1"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_started" outgoings="//@arcs.11 //@arcs.14 //@arcs.28 //@arcs.29" incomings="//@arcs.17"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_running" outgoings="//@arcs.19 //@arcs.33" incomings="//@arcs.18 //@arcs.36"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_finished" outgoings="//@arcs.12 //@arcs.13 //@arcs.30 //@arcs.31 //@arcs.32" incomings="//@arcs.20"/>
+  <nodes xsi:type="PetriNet:Transition" name="Conception_start" outgoings="//@arcs.17 //@arcs.18 //@arcs.21 //@arcs.102 //@arcs.108" incomings="//@arcs.16 //@arcs.101 //@arcs.107"/>
+  <nodes xsi:type="PetriNet:Transition" name="Conception_finish" outgoings="//@arcs.20 //@arcs.100 //@arcs.106" incomings="//@arcs.19 //@arcs.103 //@arcs.109" min_time="10" max_time="16"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_initial" outgoings="//@arcs.22 //@arcs.24" incomings="//@arcs.21"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_onTime" outgoings="//@arcs.26" incomings="//@arcs.25"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_tooEarly" incomings="//@arcs.23"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_tooLate" incomings="//@arcs.27"/>
+  <nodes xsi:type="PetriNet:Transition" name="Conception_beginOnTime" outgoings="//@arcs.25" incomings="//@arcs.24 //@arcs.28" min_time="10" max_time="10"/>
+  <nodes xsi:type="PetriNet:Transition" name="Conception_isTooEarly" outgoings="//@arcs.23" incomings="//@arcs.22 //@arcs.30"/>
+  <nodes xsi:type="PetriNet:Transition" name="Conception_isTooLate" outgoings="//@arcs.27" incomings="//@arcs.26 //@arcs.29 //@arcs.31" min_time="6" max_time="6"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_inBreak" outgoings="//@arcs.35" incomings="//@arcs.34"/>
+  <nodes xsi:type="PetriNet:Transition" name="Conception_break" outgoings="//@arcs.34 //@arcs.105 //@arcs.111" incomings="//@arcs.33" max_time="-1"/>
+  <nodes xsi:type="PetriNet:Transition" name="Conception_stopBreak" outgoings="//@arcs.36" incomings="//@arcs.35 //@arcs.104 //@arcs.110" max_time="-1"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_ready" outgoings="//@arcs.37" marking="1"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_started" outgoings="//@arcs.49 //@arcs.50" incomings="//@arcs.38"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_running" outgoings="//@arcs.40 //@arcs.54" incomings="//@arcs.39 //@arcs.57"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_finished" outgoings="//@arcs.51 //@arcs.52 //@arcs.53" incomings="//@arcs.41"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionDoc_start" outgoings="//@arcs.38 //@arcs.39 //@arcs.42 //@arcs.138 //@arcs.144" incomings="//@arcs.11 //@arcs.37 //@arcs.137 //@arcs.143"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionDoc_finish" outgoings="//@arcs.41 //@arcs.136 //@arcs.142" incomings="//@arcs.12 //@arcs.40 //@arcs.139 //@arcs.145" min_time="8" max_time="12"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_initial" outgoings="//@arcs.43 //@arcs.45" incomings="//@arcs.42"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_onTime" outgoings="//@arcs.47" incomings="//@arcs.46"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_tooEarly" incomings="//@arcs.44"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_tooLate" incomings="//@arcs.48"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionDoc_beginOnTime" outgoings="//@arcs.46" incomings="//@arcs.45 //@arcs.49" min_time="8" max_time="8"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionDoc_isTooEarly" outgoings="//@arcs.44" incomings="//@arcs.43 //@arcs.51"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionDoc_isTooLate" outgoings="//@arcs.48" incomings="//@arcs.47 //@arcs.50 //@arcs.52" min_time="4" max_time="4"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_inBreak" outgoings="//@arcs.56" incomings="//@arcs.55"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionDoc_break" outgoings="//@arcs.55 //@arcs.141 //@arcs.147" incomings="//@arcs.54" max_time="-1"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionDoc_stopBreak" outgoings="//@arcs.57" incomings="//@arcs.56 //@arcs.140 //@arcs.146" max_time="-1"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_ready" outgoings="//@arcs.58" marking="1"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_started" outgoings="//@arcs.70 //@arcs.71" incomings="//@arcs.59"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_running" outgoings="//@arcs.61 //@arcs.75" incomings="//@arcs.60 //@arcs.78"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_finished" outgoings="//@arcs.15 //@arcs.72 //@arcs.73 //@arcs.74" incomings="//@arcs.62"/>
+  <nodes xsi:type="PetriNet:Transition" name="Development_start" outgoings="//@arcs.59 //@arcs.60 //@arcs.63 //@arcs.126 //@arcs.132" incomings="//@arcs.13 //@arcs.58 //@arcs.125 //@arcs.131"/>
+  <nodes xsi:type="PetriNet:Transition" name="Development_finish" outgoings="//@arcs.62 //@arcs.124 //@arcs.130" incomings="//@arcs.61 //@arcs.127 //@arcs.133" min_time="12" max_time="14"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_initial" outgoings="//@arcs.64 //@arcs.66" incomings="//@arcs.63"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_onTime" outgoings="//@arcs.68" incomings="//@arcs.67"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_tooEarly" incomings="//@arcs.65"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_tooLate" incomings="//@arcs.69"/>
+  <nodes xsi:type="PetriNet:Transition" name="Development_beginOnTime" outgoings="//@arcs.67" incomings="//@arcs.66 //@arcs.70" min_time="12" max_time="12"/>
+  <nodes xsi:type="PetriNet:Transition" name="Development_isTooEarly" outgoings="//@arcs.65" incomings="//@arcs.64 //@arcs.72"/>
+  <nodes xsi:type="PetriNet:Transition" name="Development_isTooLate" outgoings="//@arcs.69" incomings="//@arcs.68 //@arcs.71 //@arcs.73" min_time="2" max_time="2"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_inBreak" outgoings="//@arcs.77" incomings="//@arcs.76"/>
+  <nodes xsi:type="PetriNet:Transition" name="Development_break" outgoings="//@arcs.76 //@arcs.129 //@arcs.135" incomings="//@arcs.75" max_time="-1"/>
+  <nodes xsi:type="PetriNet:Transition" name="Development_stopBreak" outgoings="//@arcs.78" incomings="//@arcs.77 //@arcs.128 //@arcs.134" max_time="-1"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_ready" outgoings="//@arcs.79" marking="1"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_started" outgoings="//@arcs.91 //@arcs.92" incomings="//@arcs.80"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_running" outgoings="//@arcs.82 //@arcs.96" incomings="//@arcs.81 //@arcs.99"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_finished" outgoings="//@arcs.93 //@arcs.94 //@arcs.95" incomings="//@arcs.83"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionTest_start" outgoings="//@arcs.80 //@arcs.81 //@arcs.84 //@arcs.114 //@arcs.120" incomings="//@arcs.14 //@arcs.79 //@arcs.113 //@arcs.119"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionTest_finish" outgoings="//@arcs.83 //@arcs.112 //@arcs.118" incomings="//@arcs.15 //@arcs.82 //@arcs.115 //@arcs.121" min_time="10" max_time="12"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_initial" outgoings="//@arcs.85 //@arcs.87" incomings="//@arcs.84"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_onTime" outgoings="//@arcs.89" incomings="//@arcs.88"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_tooEarly" incomings="//@arcs.86"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_tooLate" incomings="//@arcs.90"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionTest_beginOnTime" outgoings="//@arcs.88" incomings="//@arcs.87 //@arcs.91" min_time="10" max_time="10"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionTest_isTooEarly" outgoings="//@arcs.86" incomings="//@arcs.85 //@arcs.93"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionTest_isTooLate" outgoings="//@arcs.90" incomings="//@arcs.89 //@arcs.92 //@arcs.94" min_time="2" max_time="2"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_inBreak" outgoings="//@arcs.98" incomings="//@arcs.97"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionTest_break" outgoings="//@arcs.97 //@arcs.117 //@arcs.123" incomings="//@arcs.96" max_time="-1"/>
+  <nodes xsi:type="PetriNet:Transition" name="RedactionTest_stopBreak" outgoings="//@arcs.99" incomings="//@arcs.98 //@arcs.116 //@arcs.122" max_time="-1"/>
+  <nodes xsi:type="PetriNet:Place" name="concepteur" outgoings="//@arcs.101 //@arcs.104" incomings="//@arcs.100 //@arcs.105" marking="3"/>
+  <nodes xsi:type="PetriNet:Place" name="redacteur" outgoings="//@arcs.137 //@arcs.140" incomings="//@arcs.136 //@arcs.141" marking="1"/>
+  <nodes xsi:type="PetriNet:Place" name="developpeur" outgoings="//@arcs.125 //@arcs.128" incomings="//@arcs.124 //@arcs.129" marking="2"/>
+  <nodes xsi:type="PetriNet:Place" name="testeur" outgoings="//@arcs.113 //@arcs.116" incomings="//@arcs.112 //@arcs.117" marking="2"/>
+  <nodes xsi:type="PetriNet:Place" name="machine" outgoings="//@arcs.107 //@arcs.110 //@arcs.119 //@arcs.122 //@arcs.131 //@arcs.134 //@arcs.143 //@arcs.146" incomings="//@arcs.106 //@arcs.111 //@arcs.118 //@arcs.123 //@arcs.130 //@arcs.135 //@arcs.142 //@arcs.147" marking="4"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_concepteur_internResource" outgoings="//@arcs.103" incomings="//@arcs.102"/>
+  <nodes xsi:type="PetriNet:Place" name="Conception_machine_internResource" outgoings="//@arcs.109" incomings="//@arcs.108"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_testeur_internResource" outgoings="//@arcs.115" incomings="//@arcs.114"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionTest_machine_internResource" outgoings="//@arcs.121" incomings="//@arcs.120"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_developpeur_internResource" outgoings="//@arcs.127" incomings="//@arcs.126"/>
+  <nodes xsi:type="PetriNet:Place" name="Development_machine_internResource" outgoings="//@arcs.133" incomings="//@arcs.132"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_redacteur_internResource" outgoings="//@arcs.139" incomings="//@arcs.138"/>
+  <nodes xsi:type="PetriNet:Place" name="RedactionDoc_machine_internResource" outgoings="//@arcs.145" incomings="//@arcs.144"/>
+  <arcs target="//@nodes.2" source="//@nodes.0" weight="1"/>
+  <arcs target="//@nodes.1" source="//@nodes.2" weight="1"/>
+  <arcs target="//@nodes.8" source="//@nodes.3" weight="1"/>
+  <arcs target="//@nodes.5" source="//@nodes.8" weight="1"/>
+  <arcs target="//@nodes.7" source="//@nodes.3" weight="1"/>
+  <arcs target="//@nodes.4" source="//@nodes.7" weight="1"/>
+  <arcs target="//@nodes.9" source="//@nodes.4" weight="1"/>
+  <arcs target="//@nodes.6" source="//@nodes.9" weight="1"/>
+  <arcs target="//@nodes.7" source="//@nodes.0" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.9" source="//@nodes.0" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.8" source="//@nodes.1" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.30" source="//@nodes.11" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.31" source="//@nodes.13" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.46" source="//@nodes.13" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.62" source="//@nodes.11" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.63" source="//@nodes.45" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.14" source="//@nodes.10" weight="1"/>
+  <arcs target="//@nodes.11" source="//@nodes.14" weight="1"/>
+  <arcs target="//@nodes.12" source="//@nodes.14" weight="1"/>
+  <arcs target="//@nodes.15" source="//@nodes.12" weight="1"/>
+  <arcs target="//@nodes.13" source="//@nodes.15" weight="1"/>
+  <arcs target="//@nodes.16" source="//@nodes.14" weight="1"/>
+  <arcs target="//@nodes.21" source="//@nodes.16" weight="1"/>
+  <arcs target="//@nodes.18" source="//@nodes.21" weight="1"/>
+  <arcs target="//@nodes.20" source="//@nodes.16" weight="1"/>
+  <arcs target="//@nodes.17" source="//@nodes.20" weight="1"/>
+  <arcs target="//@nodes.22" source="//@nodes.17" weight="1"/>
+  <arcs target="//@nodes.19" source="//@nodes.22" weight="1"/>
+  <arcs target="//@nodes.20" source="//@nodes.11" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.22" source="//@nodes.11" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.21" source="//@nodes.13" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.22" source="//@nodes.13" weight="1" kind="inhibitor"/>
+  <arcs target="//@nodes.2" source="//@nodes.13" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.24" source="//@nodes.12" weight="1"/>
+  <arcs target="//@nodes.23" source="//@nodes.24" weight="1"/>
+  <arcs target="//@nodes.25" source="//@nodes.23" weight="1"/>
+  <arcs target="//@nodes.12" source="//@nodes.25" weight="1"/>
+  <arcs target="//@nodes.30" source="//@nodes.26" weight="1"/>
+  <arcs target="//@nodes.27" source="//@nodes.30" weight="1"/>
+  <arcs target="//@nodes.28" source="//@nodes.30" weight="1"/>
+  <arcs target="//@nodes.31" source="//@nodes.28" weight="1"/>
+  <arcs target="//@nodes.29" source="//@nodes.31" weight="1"/>
+  <arcs target="//@nodes.32" source="//@nodes.30" weight="1"/>
+  <arcs target="//@nodes.37" source="//@nodes.32" weight="1"/>
+  <arcs target="//@nodes.34" source="//@nodes.37" weight="1"/>
+  <arcs target="//@nodes.36" source="//@nodes.32" weight="1"/>
+  <arcs target="//@nodes.33" source="//@nodes.36" weight="1"/>
+  <arcs target="//@nodes.38" source="//@nodes.33" weight="1"/>
+  <arcs target="//@nodes.35" source="//@nodes.38" weight="1"/>
+  <arcs target="//@nodes.36" source="//@nodes.27" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.38" source="//@nodes.27" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.37" source="//@nodes.29" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.38" source="//@nodes.29" weight="1" kind="inhibitor"/>
+  <arcs target="//@nodes.2" source="//@nodes.29" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.40" source="//@nodes.28" weight="1"/>
+  <arcs target="//@nodes.39" source="//@nodes.40" weight="1"/>
+  <arcs target="//@nodes.41" source="//@nodes.39" weight="1"/>
+  <arcs target="//@nodes.28" source="//@nodes.41" weight="1"/>
+  <arcs target="//@nodes.46" source="//@nodes.42" weight="1"/>
+  <arcs target="//@nodes.43" source="//@nodes.46" weight="1"/>
+  <arcs target="//@nodes.44" source="//@nodes.46" weight="1"/>
+  <arcs target="//@nodes.47" source="//@nodes.44" weight="1"/>
+  <arcs target="//@nodes.45" source="//@nodes.47" weight="1"/>
+  <arcs target="//@nodes.48" source="//@nodes.46" weight="1"/>
+  <arcs target="//@nodes.53" source="//@nodes.48" weight="1"/>
+  <arcs target="//@nodes.50" source="//@nodes.53" weight="1"/>
+  <arcs target="//@nodes.52" source="//@nodes.48" weight="1"/>
+  <arcs target="//@nodes.49" source="//@nodes.52" weight="1"/>
+  <arcs target="//@nodes.54" source="//@nodes.49" weight="1"/>
+  <arcs target="//@nodes.51" source="//@nodes.54" weight="1"/>
+  <arcs target="//@nodes.52" source="//@nodes.43" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.54" source="//@nodes.43" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.53" source="//@nodes.45" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.54" source="//@nodes.45" weight="1" kind="inhibitor"/>
+  <arcs target="//@nodes.2" source="//@nodes.45" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.56" source="//@nodes.44" weight="1"/>
+  <arcs target="//@nodes.55" source="//@nodes.56" weight="1"/>
+  <arcs target="//@nodes.57" source="//@nodes.55" weight="1"/>
+  <arcs target="//@nodes.44" source="//@nodes.57" weight="1"/>
+  <arcs target="//@nodes.62" source="//@nodes.58" weight="1"/>
+  <arcs target="//@nodes.59" source="//@nodes.62" weight="1"/>
+  <arcs target="//@nodes.60" source="//@nodes.62" weight="1"/>
+  <arcs target="//@nodes.63" source="//@nodes.60" weight="1"/>
+  <arcs target="//@nodes.61" source="//@nodes.63" weight="1"/>
+  <arcs target="//@nodes.64" source="//@nodes.62" weight="1"/>
+  <arcs target="//@nodes.69" source="//@nodes.64" weight="1"/>
+  <arcs target="//@nodes.66" source="//@nodes.69" weight="1"/>
+  <arcs target="//@nodes.68" source="//@nodes.64" weight="1"/>
+  <arcs target="//@nodes.65" source="//@nodes.68" weight="1"/>
+  <arcs target="//@nodes.70" source="//@nodes.65" weight="1"/>
+  <arcs target="//@nodes.67" source="//@nodes.70" weight="1"/>
+  <arcs target="//@nodes.68" source="//@nodes.59" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.70" source="//@nodes.59" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.69" source="//@nodes.61" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.70" source="//@nodes.61" weight="1" kind="inhibitor"/>
+  <arcs target="//@nodes.2" source="//@nodes.61" weight="1" kind="read_arc"/>
+  <arcs target="//@nodes.72" source="//@nodes.60" weight="1"/>
+  <arcs target="//@nodes.71" source="//@nodes.72" weight="1"/>
+  <arcs target="//@nodes.73" source="//@nodes.71" weight="1"/>
+  <arcs target="//@nodes.60" source="//@nodes.73" weight="1"/>
+  <arcs target="//@nodes.74" source="//@nodes.15" weight="2"/>
+  <arcs target="//@nodes.14" source="//@nodes.74" weight="2"/>
+  <arcs target="//@nodes.79" source="//@nodes.14" weight="2"/>
+  <arcs target="//@nodes.15" source="//@nodes.79" weight="2"/>
+  <arcs target="//@nodes.25" source="//@nodes.74" weight="2"/>
+  <arcs target="//@nodes.74" source="//@nodes.24" weight="2"/>
+  <arcs target="//@nodes.78" source="//@nodes.15" weight="2"/>
+  <arcs target="//@nodes.14" source="//@nodes.78" weight="2"/>
+  <arcs target="//@nodes.80" source="//@nodes.14" weight="2"/>
+  <arcs target="//@nodes.15" source="//@nodes.80" weight="2"/>
+  <arcs target="//@nodes.25" source="//@nodes.78" weight="2"/>
+  <arcs target="//@nodes.78" source="//@nodes.24" weight="2"/>
+  <arcs target="//@nodes.77" source="//@nodes.63" weight="1"/>
+  <arcs target="//@nodes.62" source="//@nodes.77" weight="1"/>
+  <arcs target="//@nodes.81" source="//@nodes.62" weight="1"/>
+  <arcs target="//@nodes.63" source="//@nodes.81" weight="1"/>
+  <arcs target="//@nodes.73" source="//@nodes.77" weight="1"/>
+  <arcs target="//@nodes.77" source="//@nodes.72" weight="1"/>
+  <arcs target="//@nodes.78" source="//@nodes.63" weight="2"/>
+  <arcs target="//@nodes.62" source="//@nodes.78" weight="2"/>
+  <arcs target="//@nodes.82" source="//@nodes.62" weight="2"/>
+  <arcs target="//@nodes.63" source="//@nodes.82" weight="2"/>
+  <arcs target="//@nodes.73" source="//@nodes.78" weight="2"/>
+  <arcs target="//@nodes.78" source="//@nodes.72" weight="2"/>
+  <arcs target="//@nodes.76" source="//@nodes.47" weight="2"/>
+  <arcs target="//@nodes.46" source="//@nodes.76" weight="2"/>
+  <arcs target="//@nodes.83" source="//@nodes.46" weight="2"/>
+  <arcs target="//@nodes.47" source="//@nodes.83" weight="2"/>
+  <arcs target="//@nodes.57" source="//@nodes.76" weight="2"/>
+  <arcs target="//@nodes.76" source="//@nodes.56" weight="2"/>
+  <arcs target="//@nodes.78" source="//@nodes.47" weight="3"/>
+  <arcs target="//@nodes.46" source="//@nodes.78" weight="3"/>
+  <arcs target="//@nodes.84" source="//@nodes.46" weight="3"/>
+  <arcs target="//@nodes.47" source="//@nodes.84" weight="3"/>
+  <arcs target="//@nodes.57" source="//@nodes.78" weight="3"/>
+  <arcs target="//@nodes.78" source="//@nodes.56" weight="3"/>
+  <arcs target="//@nodes.75" source="//@nodes.31" weight="1"/>
+  <arcs target="//@nodes.30" source="//@nodes.75" weight="1"/>
+  <arcs target="//@nodes.85" source="//@nodes.30" weight="1"/>
+  <arcs target="//@nodes.31" source="//@nodes.85" weight="1"/>
+  <arcs target="//@nodes.41" source="//@nodes.75" weight="1"/>
+  <arcs target="//@nodes.75" source="//@nodes.40" weight="1"/>
+  <arcs target="//@nodes.78" source="//@nodes.31" weight="1"/>
+  <arcs target="//@nodes.30" source="//@nodes.78" weight="1"/>
+  <arcs target="//@nodes.86" source="//@nodes.30" weight="1"/>
+  <arcs target="//@nodes.31" source="//@nodes.86" weight="1"/>
+  <arcs target="//@nodes.41" source="//@nodes.78" weight="1"/>
+  <arcs target="//@nodes.78" source="//@nodes.40" weight="1"/>
+</PetriNet:PetriNet>

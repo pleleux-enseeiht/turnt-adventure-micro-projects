@@ -1,0 +1,161 @@
+p 1195.0 275.0 RedactionTest_ready 1 n
+t 390.0 455.0 RedactionDoc_start e 0 0 n {} ne
+p 455.0 510.0 redacteur 1 n
+p 390.0 395.0 RedactionDoc_ready 1 n
+p 450.0 455.0 RedactionDoc_started 0 n
+p 390.0 510.0 RedactionDoc_running 0 n
+t 390.0 570.0 RedactionDoc_finish e 7 13 n {} ne
+p 390.0 630.0 RedactionDoc_finished 0 n
+p 305.0 455.0 RedactionDoc_initial 0 n
+t 305.0 510.0 RedactionDoc_beginOnTime w 8 8 n {} ne
+p 305.0 570.0 RedactionDoc_onTime 0 n
+t 305.0 630.0 RedactionDoc_deadline w 4 4 n {} ne
+p 305.0 690.0 RedactionDoc_AfterDeadline 0 n
+t 305.0 755.0 RedactionDoc_isTooLate w 0 0 n {} ne
+p 305.0 810.0 RedactionDoc_tooLate 0 n
+t 235.0 755.0 RedactionDoc_isTooEarly w 0 0 n {} ne
+p 235.0 810.0 RedactionDoc_tooEarly 0 n
+p 755.0 400.0 Development_ready 1 n
+t 755.0 460.0 Development_start e 0 0 n {} ne
+p 685.0 460.0 Development_initial 0 n
+p 825.0 460.0 Development_started 0 n
+p 755.0 515.0 Development_running 0 n
+t 755.0 575.0 Development_finish 11 15 n
+p 845.0 515.0 developpeur 2 n
+p 755.0 630.0 Development_finished 0 n
+t 685.0 515.0 Development_beginOnTime 12 12 n
+p 685.0 575.0 Development_onTime 0 n
+t 685.0 635.0 Development_deadline nw 2 2 n {} ne
+p 685.0 695.0 Development_AfterDeadline 0 n
+t 685.0 755.0 Development_isTooLate nw 0 0 n {} ne
+p 685.0 810.0 Development_tooLate 0 n
+t 620.0 755.0 Development_isTooEarly nw 0 0 n {} ne
+p 620.0 810.0 Development_tooEarly 0 n
+t 1195.0 335.0 RedactionTest_start 0 0 n
+p 1195.0 395.0 RedactionTest_running 0 n
+t 1195.0 455.0 RedactionTest_finish e 9 13 n {} ne
+p 1195.0 510.0 RedactionTest_finished 0 n
+p 1265.0 395.0 testeur 2 n
+p 1255.0 335.0 RedactionTest_started 0 n
+p 1115.0 335.0 RedactionTest_initial 0 n
+t 1115.0 395.0 RedactionTest_beginOnTime e 10 10 n {} ne
+p 1115.0 450.0 RedactionTest_onTime 0 n
+t 1115.0 505.0 RedactionTest_deadline 2 2 n
+p 1115.0 560.0 RedactionTest_AfterDeadline 0 n
+t 1115.0 615.0 RedactionTest_isTooLate e 0 0 n {} ne
+p 1115.0 670.0 RedactionTest_tooLate 0 n
+t 1045.0 615.0 RedactionTest_isTooEarly w 0 0 n {} ne
+p 1045.0 670.0 RedactionTest_tooEarly 0 n
+p 215.0 30.0 Conception_ready 1 n
+t 215.0 85.0 Conception_start s 0 0 n {} ne
+p 215.0 145.0 Conception_running 0 n
+t 215.0 200.0 Conception_finish n 9 17 n {} ne
+p 300.0 135.0 concepteur 3 n
+p 280.0 85.0 Conception_started 0 n
+p 215.0 255.0 Conception_finished 0 n
+p 140.0 85.0 Conception_initial 0 n
+t 140.0 145.0 Conception_beginOnTime e 10 10 n {} ne
+p 140.0 200.0 Conception_onTime 0 n
+t 140.0 255.0 Conception_deadline e 6 6 n {} ne
+p 140.0 310.0 Conception_AfterDeadline 0 n
+t 140.0 365.0 Conception_isTooLate 0 0 n
+p 140.0 420.0 Conception_tooLate 0 n
+t 65.0 365.0 Conception_isTooEarly s 0 0 n {} ne
+p 65.0 420.0 Conception_tooEarly 0 n
+p 850.0 85.0 machine 4 n
+e machine Conception_start 2 n
+e concepteur Conception_start 2 n
+e Conception_ready Conception_start 1 n
+e Conception_start Conception_initial 1 n
+e Conception_start Conception_running 1 n
+e Conception_start Conception_started 1 n
+e Conception_running Conception_finish 1 n
+e Conception_finish machine 2 n
+e Conception_finish concepteur 2 n
+e Conception_finish Conception_finished 1 n
+e Conception_initial Conception_beginOnTime 1 n
+e Conception_running Conception_beginOnTime ?1 n
+e Conception_beginOnTime Conception_onTime 1 n
+e Conception_onTime Conception_deadline 1 n
+e Conception_running Conception_deadline ?1 n
+e Conception_deadline Conception_AfterDeadline 1 n
+e Conception_initial Conception_isTooEarly 1 n
+e Conception_finished Conception_isTooEarly ?1 n
+e Conception_isTooEarly Conception_tooEarly 1 n
+e Conception_AfterDeadline Conception_isTooLate 1 n
+e Conception_running Conception_isTooLate ?1 n
+e Conception_isTooLate Conception_tooLate 1 n
+e machine RedactionDoc_start 1 n
+e redacteur RedactionDoc_start 1 n
+e RedactionDoc_ready RedactionDoc_start 1 n
+e Conception_started RedactionDoc_start ?1 n
+e RedactionDoc_start RedactionDoc_initial 1 n
+e RedactionDoc_start RedactionDoc_running 1 n
+e RedactionDoc_start RedactionDoc_started 1 n
+e RedactionDoc_running RedactionDoc_finish 1 n
+e Conception_finished 0.7414383866 260.3766503 RedactionDoc_finish 0.4569304328 160.853971 ?1 n
+e RedactionDoc_finish machine 1 n
+e RedactionDoc_finish redacteur 1 n
+e RedactionDoc_finish RedactionDoc_finished 1 n
+e RedactionDoc_initial RedactionDoc_beginOnTime 1 n
+e RedactionDoc_running RedactionDoc_beginOnTime ?1 n
+e RedactionDoc_beginOnTime RedactionDoc_onTime 1 n
+e RedactionDoc_onTime RedactionDoc_deadline 1 n
+e RedactionDoc_running RedactionDoc_deadline ?1 n
+e RedactionDoc_deadline RedactionDoc_AfterDeadline 1 n
+e RedactionDoc_initial RedactionDoc_isTooEarly 1 n
+e RedactionDoc_finished RedactionDoc_isTooEarly ?1 n
+e RedactionDoc_isTooEarly RedactionDoc_tooEarly 1 n
+e RedactionDoc_AfterDeadline RedactionDoc_isTooLate 1 n
+e RedactionDoc_running RedactionDoc_isTooLate ?1 n
+e RedactionDoc_isTooLate RedactionDoc_tooLate 1 n
+e machine Development_start 3 n
+e developpeur Development_start 2 n
+e Development_ready Development_start 1 n
+e Conception_finished Development_start ?1 n
+e Development_start Development_initial 1 n
+e Development_start Development_running 1 n
+e Development_start Development_started 1 n
+e Development_running Development_finish 1 n
+e Development_finish machine 3 n
+e Development_finish developpeur 2 n
+e Development_finish Development_finished 1 n
+e Development_initial Development_beginOnTime 1 n
+e Development_running Development_beginOnTime ?1 n
+e Development_beginOnTime Development_onTime 1 n
+e Development_onTime Development_deadline 1 n
+e Development_running Development_deadline ?1 n
+e Development_deadline Development_AfterDeadline 1 n
+e Development_initial Development_isTooEarly 1 n
+e Development_finished Development_isTooEarly ?1 n
+e Development_isTooEarly Development_tooEarly 1 n
+e Development_AfterDeadline Development_isTooLate 1 n
+e Development_running Development_isTooLate ?1 n
+e Development_isTooLate Development_tooLate 1 n
+e machine RedactionTest_start 2 n
+e testeur RedactionTest_start 1 n
+e RedactionTest_ready RedactionTest_start 1 n
+e Conception_started RedactionTest_start ?1 n
+e RedactionTest_start RedactionTest_initial 1 n
+e RedactionTest_start RedactionTest_running 1 n
+e RedactionTest_start RedactionTest_started 1 n
+e RedactionTest_running RedactionTest_finish 1 n
+e Development_finished 0.08249070148 147.3533169 RedactionTest_finish 0.528394913 123.9677377 ?1 n
+e RedactionTest_finish machine 2 n
+e RedactionTest_finish testeur 1 n
+e RedactionTest_finish RedactionTest_finished 1 n
+e RedactionTest_initial RedactionTest_beginOnTime 1 n
+e RedactionTest_running RedactionTest_beginOnTime ?1 n
+e RedactionTest_beginOnTime RedactionTest_onTime 1 n
+e RedactionTest_onTime RedactionTest_deadline 1 n
+e RedactionTest_running RedactionTest_deadline ?1 n
+e RedactionTest_deadline RedactionTest_AfterDeadline 1 n
+e RedactionTest_initial RedactionTest_isTooEarly 1 n
+e RedactionTest_finished RedactionTest_isTooEarly ?1 n
+e RedactionTest_isTooEarly RedactionTest_tooEarly 1 n
+e RedactionTest_AfterDeadline RedactionTest_isTooLate 1 n
+e RedactionTest_running RedactionTest_isTooLate ?1 n
+e RedactionTest_isTooLate RedactionTest_tooLate 1 n
+h Developpement small
+
+

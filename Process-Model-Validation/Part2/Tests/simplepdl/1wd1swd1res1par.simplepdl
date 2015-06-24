@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl" name="1wd1swd1res1par" max_time="10">
+  <processElements xsi:type="simplepdl:WorkDefinition" name="WD" max_time="5" children="//@processElements.1" needsWD="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:SubWorkDefinition" name="SWD" max_time="3" parent="//@processElements.0" needsSWD="//@processElements.3"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="WD_machine" nbNeeds="5" resource="//@resources.0" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="machineswd" nbNeeds="3" internResource="//@processElements.2" subWorkDefinition="//@processElements.1"/>
+  <resources name="machine" marking="10"/>
+</simplepdl:Process>

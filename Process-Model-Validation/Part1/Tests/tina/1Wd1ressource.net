@@ -1,0 +1,25 @@
+	tr 1Wd1ressource_finish [16,16] 1Wd1ressource_running*1 Conception_finished?1 ->  1Wd1ressource_finished*1
+	tr 1Wd1ressource_beginOnTime [12,12] 1Wd1ressource_initial*1 1Wd1ressource_running?1 ->  1Wd1ressource_onTime*1
+	tr 1Wd1ressource_isTooEarly [0,0] 1Wd1ressource_initial*1 1Wd1ressource_finished?1 ->  1Wd1ressource_tooEarly*1
+	tr 1Wd1ressource_isTooLate [0,0] 1Wd1ressource_onTime*1 1Wd1ressource_running?1 ->  1Wd1ressource_tooLate*1
+	tr Conception_start [0,0] Conception_ready*1 Concepteur*2 ->  Conception_started*1 Conception_running*1 Conception_initial*1
+	tr Conception_finish [16,16] Conception_running*1 ->  Conception_finished*1 Concepteur*2
+	tr Conception_beginOnTime [12,12] Conception_initial*1 Conception_running?1 ->  Conception_onTime*1
+	tr Conception_isTooEarly [0,0] Conception_initial*1 Conception_finished?1 ->  Conception_tooEarly*1
+	tr Conception_isTooLate [0,0] Conception_onTime*1 Conception_running?1 ->  Conception_tooLate*1
+	pl 1Wd1ressource_running (1)
+	pl 1Wd1ressource_finished (0)
+	pl 1Wd1ressource_initial (1)
+	pl 1Wd1ressource_onTime (0)
+	pl 1Wd1ressource_tooEarly (0)
+	pl 1Wd1ressource_tooLate (0)
+	pl Conception_ready (1)
+	pl Conception_started (0)
+	pl Conception_running (0)
+	pl Conception_finished (0)
+	pl Conception_initial (0)
+	pl Conception_onTime (0)
+	pl Conception_tooEarly (0)
+	pl Conception_tooLate (0)
+	pl Concepteur (4)
+	net 1Wd1ressource

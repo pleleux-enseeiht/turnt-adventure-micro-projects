@@ -1,0 +1,115 @@
+p 760.0 135.0 WD_ready 1 n
+t 760.0 205.0 WD_start 0 0 n
+p 760.0 275.0 WD_running 0 n
+t 760.0 350.0 WD_finish 0 5 n
+p 760.0 420.0 WD_finished 0 n
+p 915.0 205.0 WD_initial 0 n
+p 835.0 250.0 WD_started 0 n
+t 915.0 280.0 WD_beginOnTime 0 0 n
+p 915.0 355.0 WD_onTime 0 n
+t 915.0 425.0 WD_isTooLate 5 5 n
+p 915.0 495.0 WD_tooLate 0 n
+t 675.0 275.0 WD_break 0 w n
+p 600.0 275.0 WD_inBreak 0 n
+t 600.0 205.0 WD_stopBreak 0 w n
+p 995.0 355.0 WD_tooEarly 0 n
+t 995.0 280.0 WD_isTooEarly 0 0 n
+p 1375.0 210.0 SWD_ready 0 n
+t 1375.0 280.0 SWD_start 0 0 n
+p 1375.0 350.0 SWD_running 0 n
+t 1375.0 420.0 SWD_finish 0 3 n
+p 1375.0 490.0 SWD_finished 0 n
+p 1525.0 280.0 SWD_initial 0 n
+t 1525.0 350.0 SWD_beginOnTime 0 0 n
+p 1525.0 420.0 SWD_onTime 0 n
+t 1525.0 490.0 SWD_isTooLate 3 3 n
+p 1525.0 565.0 SWD_tooLate 0 n
+p 1450.0 320.0 SWD_started 0 n
+t 1300.0 350.0 SWD_break 0 w n
+p 1225.0 350.0 SWD_inBreak 0 n
+t 1225.0 280.0 SWD_stopBreak 0 w n
+p 1455.0 145.0 machineswd_internResource 0 n
+t 1610.0 350.0 SWD_isTooEarly 0 0 n
+p 1610.0 420.0 SWD_tooEarly 0 n
+p 185.0 70.0 1wd1swd1res1par_initial 1 n
+p 320.0 70.0 1wd1swd1res1par_running 1 n
+t 185.0 145.0 1wd1swd1res1par_beginOnTime 0 0 n
+p 185.0 215.0 1wd1swd1res1par_onTime 0 n
+t 185.0 290.0 1wd1swd1res1par_isTooLate 10 10 n
+p 185.0 360.0 1wd1swd1res1par_tooLate 0 n
+t 100.0 145.0 1wd1swd1res1par_isTooEarly 0 0 n
+p 100.0 215.0 1wd1swd1res1par_tooEarly 0 n
+t 320.0 145.0 1wd1swd1res1par_finish 0 10 n
+p 320.0 215.0 1wd1swd1res1par_finished 0 n
+p 575.0 50.0 machine 10 n
+p 1090.0 105.0 WD_machine_internResource 0 n
+e 1wd1swd1res1par_running 1wd1swd1res1par_finish 1 n
+e WD_finished 1wd1swd1res1par_finish ?1 n
+e 1wd1swd1res1par_finish 1wd1swd1res1par_finished 1 n
+e 1wd1swd1res1par_initial 1wd1swd1res1par_beginOnTime 1 n
+e 1wd1swd1res1par_running 1wd1swd1res1par_beginOnTime ?1 n
+e 1wd1swd1res1par_beginOnTime 1wd1swd1res1par_onTime 1 n
+e 1wd1swd1res1par_initial 1wd1swd1res1par_isTooEarly 1 n
+e 1wd1swd1res1par_finished 1wd1swd1res1par_isTooEarly ?1 n
+e 1wd1swd1res1par_isTooEarly 1wd1swd1res1par_tooEarly 1 n
+e 1wd1swd1res1par_onTime 1wd1swd1res1par_isTooLate 1 n
+e 1wd1swd1res1par_running 1wd1swd1res1par_isTooLate ?1 n
+e 1wd1swd1res1par_isTooLate 1wd1swd1res1par_tooLate 1 n
+e machine WD_start 5 n
+e WD_ready WD_start 1 n
+e WD_start WD_machine_internResource 5 n
+e WD_start SWD_ready 1 n
+e WD_start WD_initial 1 n
+e WD_start WD_running 1 n
+e WD_start WD_started 1 n
+e WD_machine_internResource WD_finish 5 n
+e WD_running WD_finish 1 n
+e SWD_finished WD_finish ?1 n
+e WD_finish machine 5 n
+e WD_finish WD_finished 1 n
+e WD_initial WD_beginOnTime 1 n
+e WD_started WD_beginOnTime ?1 n
+e WD_beginOnTime WD_onTime 1 n
+e WD_initial WD_isTooEarly 1 n
+e WD_finished WD_isTooEarly ?1 n
+e WD_isTooEarly WD_tooEarly 1 n
+e WD_onTime WD_isTooLate 1 n
+e WD_started WD_isTooLate ?1 n
+e WD_finished WD_isTooLate ?-1 n
+e WD_isTooLate WD_tooLate 1 n
+e WD_running WD_break 1 n
+e WD_break machine 5 n
+e WD_break WD_inBreak 1 n
+e machine WD_stopBreak 5 n
+e WD_inBreak WD_stopBreak 1 n
+e WD_stopBreak WD_running 1 n
+e WD_machine_internResource SWD_start 3 n
+e SWD_ready SWD_start 1 n
+e SWD_start machineswd_internResource 3 n
+e SWD_start SWD_initial 1 n
+e SWD_start SWD_running 1 n
+e SWD_start SWD_started 1 n
+e machineswd_internResource SWD_finish 3 n
+e SWD_running SWD_finish 1 n
+e WD_inBreak SWD_finish ?-1 n
+e SWD_finish WD_machine_internResource 3 n
+e SWD_finish SWD_finished 1 n
+e SWD_initial SWD_beginOnTime 1 n
+e SWD_started SWD_beginOnTime ?1 n
+e SWD_beginOnTime SWD_onTime 1 n
+e SWD_initial SWD_isTooEarly 1 n
+e SWD_finished SWD_isTooEarly ?1 n
+e SWD_isTooEarly SWD_tooEarly 1 n
+e SWD_onTime SWD_isTooLate 1 n
+e SWD_started SWD_isTooLate ?1 n
+e SWD_finished SWD_isTooLate ?-1 n
+e SWD_isTooLate SWD_tooLate 1 n
+e SWD_running SWD_break 1 n
+e SWD_break WD_machine_internResource 3 n
+e SWD_break SWD_inBreak 1 n
+e WD_machine_internResource SWD_stopBreak 3 n
+e SWD_inBreak SWD_stopBreak 1 n
+e SWD_stopBreak SWD_running 1 n
+h 1wd1swd1res1par
+
+

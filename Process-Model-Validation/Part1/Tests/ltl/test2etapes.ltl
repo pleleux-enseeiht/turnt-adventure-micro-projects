@@ -1,0 +1,35 @@
+# Generated ltl file (test2etapes)
+
+############################
+# Definitions d'operations #
+############################
+prefix ! p = - p;			# Negation
+infix p & q = p /\ q;		# And
+infix p | q = p \/ q;		# Or
+infix q suit p = [](p => <> q); # Sequence
+op finished =  Developpement_finished &  RédactionTests_finished & test2etapes_finished;
+#########################
+# Proprietes a verifier #
+#########################
+### Partie I
+## General
+	finished => (<> ([] finished));
+	[] ! finished; # non accessible
+	[] ! (test2etapes_finished & !Developpement_finished);
+	[] ! (test2etapes_finished & !RédactionTests_finished);
+## Ressources
+	[] (developpeur <= 2) ;
+	[] (machine <= 4) ;
+	[] (testeur <= 2) ;
+## Regles sur les WorkSequence
+	finished => ([] (RédactionTests_started => (<> Developpement_finished)));
+	finished => ([] (RédactionTests_started => (<> Developpement_finished)));
+
+# Restitution des ressources
+	finished => (developpeur = 2);
+	finished => (machine = 4);
+	finished => (testeur = 2);
+
+	[] (Developpement_ready | Developpement_running | Developpement_finished | RédactionTests_ready | RédactionTests_running | RédactionTests_finished | Developpement_running) ;
+	[] (test2etapes_running | test2etapes_finished);
+

@@ -1,0 +1,39 @@
+# Generated ltl file (test1WD1SWD1RES)
+
+############################
+# Definitions d'operations #
+############################
+prefix ! p = - p;			# Negation
+infix p & q = p /\ q;		# And
+infix p | q = p \/ q;		# Or
+infix q suit p = [](p => <> q); # Sequence
+op finished = Swd_finished &  Wd_finished & test1WD1SWD1RES_finished;
+#########################
+# Proprietes a verifier #
+#########################
+### Partie I
+## General
+[] (finished => dead);
+[] <> dead;
+[] (dead => finished);
+[] (<> finished);
+
+## Ressources
+
+
+# Restitution des ressources
+[] (<> res = 5)
+
+### Partie II
+
+## Decomposition d'une activite
+
+
+[] Swd_started suit org.eclipse.emf.ecore.impl.DynamicEObjectImpl@3803709a (eClass: org.eclipse.emf.ecore.impl.EClassImpl@69d5ab30 (name: OclInvalid_Class) (instanceClassName: null) (abstract: false, interface: false))_started;
+[] org.eclipse.emf.ecore.impl.DynamicEObjectImpl@3803709a (eClass: org.eclipse.emf.ecore.impl.EClassImpl@69d5ab30 (name: OclInvalid_Class) (instanceClassName: null) (abstract: false, interface: false))_finished suit Swd_finished;
+
+## Gestion plus fine des ressources
+	[]Wd_ready | Wd_running | Wd_inBreak | Wd_finished
+	! <> Wd| Wd_running | Wd_inBreak | Wd_finished
+
+

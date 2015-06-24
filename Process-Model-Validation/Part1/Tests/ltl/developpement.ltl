@@ -1,0 +1,34 @@
+# Generated ltl file (developpement)
+
+############################
+# Definitions d'operations #
+############################
+prefix ! p = - p;			# Negation
+infix p & q = p /\ q;		# And
+infix p | q = p \/ q;		# Or
+infix q suit p = [](p => <> q); # Sequence
+op finished =  Conception_finished &  RedactionDoc_finished &  Developpement_finished &  RedactionTests_finished & developpement_finished;
+#########################
+# Proprietes a verifier #
+#########################
+### Partie I
+## General
+	finished => (<> ([] finished));
+	[] ! finished; # non accessible
+	[] ! (developpement_finished & !Conception_finished);
+	[] ! (developpement_finished & !RedactionDoc_finished);
+	[] ! (developpement_finished & !Developpement_finished);
+	[] ! (developpement_finished & !RedactionTests_finished);
+## Ressources
+## Regles sur les WorkSequence
+	finished => ([] (RedactionDoc_started => (<> Conception_finished)));
+	finished => ([] (RedactionDoc_started => (<> Conception_finished)));
+	finished => ([] (Developpement_started => (<> Conception_finished)));
+	finished => ([] (RedactionTests_started => (<> Conception_finished)));
+	finished => ([] (RedactionTests_started => (<> Developpement_finished)));
+
+# Restitution des ressources
+
+	[] (Conception_ready | Conception_running | Conception_finished | RedactionDoc_ready | RedactionDoc_running | RedactionDoc_finished | Developpement_ready | Developpement_running | Developpement_finished | RedactionTests_ready | RedactionTests_running | RedactionTests_finished | Conception_running) ;
+	[] (developpement_running | developpement_finished);
+

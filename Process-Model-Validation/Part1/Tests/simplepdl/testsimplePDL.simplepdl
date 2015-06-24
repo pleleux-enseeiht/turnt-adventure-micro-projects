@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl" name="test2etapes" min_time="22" max_time="29">
+  <processElements xsi:type="simplepdl:WorkDefinition" linksToSuccessors="//@processElements.3 //@processElements.4" min_time="12" needs="//@processElements.1 //@processElements.5" max_time="14" name="Developpement"/>
+  <processElements xsi:type="simplepdl:Parameter" resource="//@resources.0" nbNeeds="2" name="developpeur" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:WorkDefinition" linksToPredecessors="//@processElements.3 //@processElements.4" min_time="10" needs="//@processElements.6 //@processElements.7" max_time="15" name="RédactionTests"/>
+  <processElements xsi:type="simplepdl:WorkSequence" predecessor="//@processElements.0" successor="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToFinish" predecessor="//@processElements.0" successor="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:Parameter" resource="//@resources.1" nbNeeds="3" name="machine" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:Parameter" resource="//@resources.2" nbNeeds="1" name="testeur" workDefinition="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:Parameter" resource="//@resources.1" nbNeeds="2" name="machine" workDefinition="//@processElements.2"/>
+  <resources name="developpeur" marking="2"/>
+  <resources name="machine" marking="4"/>
+  <resources name="testeur" marking="2"/>
+</simplepdl:Process>

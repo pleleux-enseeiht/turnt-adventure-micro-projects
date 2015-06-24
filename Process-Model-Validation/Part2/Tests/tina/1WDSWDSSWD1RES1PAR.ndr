@@ -1,0 +1,161 @@
+p 605.0 135.0 WD_ready 1 n
+t 605.0 175.0 WD_start 0 0 n
+p 605.0 220.0 WD_running 0 n
+t 555.0 220.0 WD_break 0 w n
+p 500.0 220.0 WD_inBreak 0 n
+t 500.0 175.0 WD_stopBreak 0 w n
+t 605.0 265.0 WD_finish 2 9 n
+p 605.0 310.0 WD_finished 0 n
+p 690.0 175.0 WD_initial 0 n
+t 690.0 220.0 WD_beginOnTime 2 2 n
+p 690.0 265.0 WD_onTime 0 n
+t 690.0 310.0 WD_isTooLate 7 7 n
+p 690.0 360.0 WD_tooLate 0 n
+p 650.0 200.0 WD_started 0 n
+t 745.0 220.0 WD_isTooEarly 0 0 n
+p 745.0 265.0 WD_tooEarly 0 n
+p 1005.0 165.0 SWD_ready 0 n
+t 1005.0 205.0 SWD_start 0 0 n
+p 1005.0 245.0 SWD_running 0 n
+t 1005.0 290.0 SWD_finish n 3 8 n {} ne
+p 1005.0 340.0 SWD_finished 0 n
+p 1105.0 205.0 SWD_initial 0 n
+t 1105.0 245.0 SWD_beginOnTime 3 3 n
+p 1105.0 290.0 SWD_onTime 0 n
+t 1105.0 340.0 SWD_isTooLate 5 5 n
+p 1105.0 385.0 SWD_tooLate 0 n
+t 1170.0 245.0 SWD_isTooEarly 0 0 n
+p 1170.0 285.0 SWD_tooEarly 0 n
+p 1055.0 230.0 SWD_started 0 n
+t 955.0 245.0 SWD_break 0 w n
+p 900.0 245.0 SWD_inBreak 0 n
+t 900.0 205.0 SWD_stopBreak 0 w n
+p 1390.0 180.0 SSWD_ready 0 n
+t 1390.0 220.0 SSWD_start 0 0 n
+p 1060.0 115.0 machineswd_internResource 0 n
+p 1390.0 265.0 SSWD_running 0 n
+t 1390.0 310.0 SSWD_finish 4 7 n
+p 1390.0 355.0 SSWD_finished 0 n
+p 1480.0 220.0 SSWD_initial 0 n
+t 1480.0 265.0 SSWD_beginOnTime 4 4 n
+p 1480.0 310.0 SSWD_onTime 0 n
+t 1540.0 265.0 SSWD_isTooEarly n 0 0 n {} ne
+p 1540.0 310.0 SSWD_tooEarly 0 n
+t 1480.0 355.0 SSWD_isTooLate 3 3 n
+t 1340.0 265.0 SSWD_break 0 w n
+p 1290.0 265.0 SSWD_inBreak 0 n
+t 1290.0 220.0 SSWD_stopBreak 0 w n
+p 1435.0 240.0 SSWD_started 0 n
+p 135.0 30.0 1WDSWDSSWD1RES1PAR_initial 1 n
+p 215.0 40.0 1WDSWDSSWD1RES1PAR_running 1 n
+t 135.0 75.0 1WDSWDSSWD1RES1PAR_beginOnTime 0 0 n
+p 135.0 120.0 1WDSWDSSWD1RES1PAR_onTime 0 n
+t 135.0 165.0 1WDSWDSSWD1RES1PAR_isTooLate 10 10 n
+p 135.0 210.0 1WDSWDSSWD1RES1PAR_tooLate 0 n
+t 85.0 75.0 1WDSWDSSWD1RES1PAR_isTooEarly 0 0 n
+p 85.0 120.0 1WDSWDSSWD1RES1PAR_tooEarly 0 n
+t 215.0 85.0 1WDSWDSSWD1RES1PAR_finish 0 10 n
+p 215.0 130.0 1WDSWDSSWD1RES1PAR_finished 0 n
+p 655.0 95.0 machinewd_internResource 0 n
+p 1450.0 130.0 machinesswd_internResource 0 n
+p 480.0 40.0 machineres 10 n
+p 1480.0 400.0 SSWD_tooLate 0 n
+e 1WDSWDSSWD1RES1PAR_running 1WDSWDSSWD1RES1PAR_finish 1 n
+e WD_finished 1WDSWDSSWD1RES1PAR_finish ?1 n
+e 1WDSWDSSWD1RES1PAR_finish 1WDSWDSSWD1RES1PAR_finished 1 n
+e 1WDSWDSSWD1RES1PAR_initial 1WDSWDSSWD1RES1PAR_beginOnTime 1 n
+e 1WDSWDSSWD1RES1PAR_running 1WDSWDSSWD1RES1PAR_beginOnTime ?1 n
+e 1WDSWDSSWD1RES1PAR_beginOnTime 1WDSWDSSWD1RES1PAR_onTime 1 n
+e 1WDSWDSSWD1RES1PAR_initial 1WDSWDSSWD1RES1PAR_isTooEarly 1 n
+e 1WDSWDSSWD1RES1PAR_finished 1WDSWDSSWD1RES1PAR_isTooEarly ?1 n
+e 1WDSWDSSWD1RES1PAR_isTooEarly 1WDSWDSSWD1RES1PAR_tooEarly 1 n
+e 1WDSWDSSWD1RES1PAR_onTime 1WDSWDSSWD1RES1PAR_isTooLate 1 n
+e 1WDSWDSSWD1RES1PAR_running 1WDSWDSSWD1RES1PAR_isTooLate ?1 n
+e 1WDSWDSSWD1RES1PAR_isTooLate 1WDSWDSSWD1RES1PAR_tooLate 1 n
+e machineres WD_start 5 n
+e WD_ready WD_start 1 n
+e WD_start machinewd_internResource 5 n
+e WD_start SWD_ready 1 n
+e WD_start WD_initial 1 n
+e WD_start WD_running 1 n
+e WD_start WD_started 1 n
+e machinewd_internResource WD_finish 5 n
+e WD_running WD_finish 1 n
+e SWD_finished WD_finish ?1 n
+e WD_finish machineres 5 n
+e WD_finish WD_finished 1 n
+e WD_initial WD_beginOnTime 1 n
+e WD_started WD_beginOnTime ?1 n
+e WD_beginOnTime WD_onTime 1 n
+e WD_initial WD_isTooEarly 1 n
+e WD_finished WD_isTooEarly ?1 n
+e WD_isTooEarly WD_tooEarly 1 n
+e WD_onTime WD_isTooLate 1 n
+e WD_started WD_isTooLate ?1 n
+e WD_finished WD_isTooLate ?-1 n
+e WD_isTooLate WD_tooLate 1 n
+e WD_running WD_break 1 n
+e WD_break machineres 5 n
+e WD_break WD_inBreak 1 n
+e machineres WD_stopBreak 5 n
+e WD_inBreak WD_stopBreak 1 n
+e WD_stopBreak WD_running 1 n
+e machinewd_internResource SWD_start 3 n
+e SWD_ready SWD_start 1 n
+e SWD_start machineswd_internResource 3 n
+e SWD_start SSWD_ready 1 n
+e SWD_start SWD_initial 1 n
+e SWD_start SWD_running 1 n
+e SWD_start SWD_started 1 n
+e machineswd_internResource SWD_finish 3 n
+e SWD_running SWD_finish 1 n
+e SSWD_finished SWD_finish ?1 n
+e WD_inBreak SWD_finish ?-1 n
+e SWD_finish machinewd_internResource 3 n
+e SWD_finish SWD_finished 1 n
+e SWD_initial SWD_beginOnTime 1 n
+e SWD_started SWD_beginOnTime ?1 n
+e SWD_beginOnTime SWD_onTime 1 n
+e SWD_initial SWD_isTooEarly 1 n
+e SWD_finished SWD_isTooEarly ?1 n
+e SWD_isTooEarly SWD_tooEarly 1 n
+e SWD_onTime SWD_isTooLate 1 n
+e SWD_started SWD_isTooLate ?1 n
+e SWD_finished SWD_isTooLate ?-1 n
+e SWD_isTooLate SWD_tooLate 1 n
+e SWD_running SWD_break 1 n
+e SWD_break machinewd_internResource 3 n
+e SWD_break SWD_inBreak 1 n
+e machinewd_internResource SWD_stopBreak 3 n
+e SWD_inBreak SWD_stopBreak 1 n
+e SWD_stopBreak SWD_running 1 n
+e machineswd_internResource SSWD_start 2 n
+e SSWD_ready SSWD_start 1 n
+e SSWD_start machinesswd_internResource 2 n
+e SSWD_start SSWD_initial 1 n
+e SSWD_start SSWD_running 1 n
+e SSWD_start SSWD_started 1 n
+e machinesswd_internResource SSWD_finish 2 n
+e SSWD_running SSWD_finish 1 n
+e SWD_inBreak SSWD_finish ?-1 n
+e SSWD_finish machineswd_internResource 2 n
+e SSWD_finish SSWD_finished 1 n
+e SSWD_initial SSWD_beginOnTime 1 n
+e SSWD_started SSWD_beginOnTime ?1 n
+e SSWD_beginOnTime SSWD_onTime 1 n
+e SSWD_initial SSWD_isTooEarly 1 n
+e SSWD_finished SSWD_isTooEarly ?1 n
+e SSWD_isTooEarly SSWD_tooEarly 1 n
+e SSWD_onTime SSWD_isTooLate 1 n
+e SSWD_started SSWD_isTooLate ?1 n
+e SSWD_finished SSWD_isTooLate ?-1 n
+e SSWD_isTooLate SSWD_tooLate 1 n
+e SSWD_running SSWD_break 1 n
+e SSWD_break machineswd_internResource 2 n
+e SSWD_break SSWD_inBreak 1 n
+e machineswd_internResource SSWD_stopBreak 2 n
+e SSWD_inBreak SSWD_stopBreak 1 n
+e SSWD_stopBreak SSWD_running 1 n
+h 1WDSWDSSWD1RES1PAR small
+
+

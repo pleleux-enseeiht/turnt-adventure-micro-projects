@@ -1,0 +1,68 @@
+	tr Developpement_finish [50,50] Developpement_running*1 Conception_finished?1 RedactionDoc_finished?1 Development_finished?1 RedactionTest_finished?1 ->  Developpement_finished*1
+	tr Developpement_beginOnTime [20,20] Developpement_initial*1 Developpement_running?1 ->  Developpement_onTime*1
+	tr Developpement_isTooEarly [0,0] Developpement_initial*1 Developpement_finished?1 ->  Developpement_tooEarly*1
+	tr Developpement_isTooLate [0,0] Developpement_onTime*1 Developpement_running?1 ->  Developpement_tooLate*1
+	tr Conception_start [0,0] Conception_ready*1 concepteur*2 machine*2 ->  Conception_started*1 Conception_running*1 Conception_initial*1
+	tr Conception_finish [16,16] Conception_running*1 ->  Conception_finished*1 concepteur*2 machine*2
+	tr Conception_beginOnTime [10,10] Conception_initial*1 Conception_running?1 ->  Conception_onTime*1
+	tr Conception_isTooEarly [0,0] Conception_initial*1 Conception_finished?1 ->  Conception_tooEarly*1
+	tr Conception_isTooLate [0,0] Conception_onTime*1 Conception_running?1 ->  Conception_tooLate*1
+	tr RedactionDoc_start [0,0] Conception_started?1 RedactionDoc_ready*1 redacteur*1 machine*1 ->  RedactionDoc_started*1 RedactionDoc_running*1 RedactionDoc_initial*1
+	tr RedactionDoc_finish [12,12] Conception_finished?1 RedactionDoc_running*1 ->  RedactionDoc_finished*1 redacteur*1 machine*1
+	tr RedactionDoc_beginOnTime [8,8] RedactionDoc_initial*1 RedactionDoc_running?1 ->  RedactionDoc_onTime*1
+	tr RedactionDoc_isTooEarly [0,0] RedactionDoc_initial*1 RedactionDoc_finished?1 ->  RedactionDoc_tooEarly*1
+	tr RedactionDoc_isTooLate [0,0] RedactionDoc_onTime*1 RedactionDoc_running?1 ->  RedactionDoc_tooLate*1
+	tr Development_start [0,0] Conception_finished?1 Development_ready*1 developpeur*2 machine*3 ->  Development_started*1 Development_running*1 Development_initial*1
+	tr Development_finish [14,14] Development_running*1 ->  Development_finished*1 developpeur*2 machine*3
+	tr Development_beginOnTime [12,12] Development_initial*1 Development_running?1 ->  Development_onTime*1
+	tr Development_isTooEarly [0,0] Development_initial*1 Development_finished?1 ->  Development_tooEarly*1
+	tr Development_isTooLate [0,0] Development_onTime*1 Development_running?1 ->  Development_tooLate*1
+	tr RedactionTest_start [0,0] Conception_started?1 RedactionTest_ready*1 testeur*1 machine*2 ->  RedactionTest_started*1 RedactionTest_running*1 RedactionTest_initial*1
+	tr RedactionTest_finish [12,12] Development_finished?1 RedactionTest_running*1 ->  RedactionTest_finished*1 testeur*1 machine*2
+	tr RedactionTest_beginOnTime [10,10] RedactionTest_initial*1 RedactionTest_running?1 ->  RedactionTest_onTime*1
+	tr RedactionTest_isTooEarly [0,0] RedactionTest_initial*1 RedactionTest_finished?1 ->  RedactionTest_tooEarly*1
+	tr RedactionTest_isTooLate [0,0] RedactionTest_onTime*1 RedactionTest_running?1 ->  RedactionTest_tooLate*1
+	pl Developpement_running (1)
+	pl Developpement_finished (0)
+	pl Developpement_initial (1)
+	pl Developpement_onTime (0)
+	pl Developpement_tooEarly (0)
+	pl Developpement_tooLate (0)
+	pl Conception_ready (1)
+	pl Conception_started (0)
+	pl Conception_running (0)
+	pl Conception_finished (0)
+	pl Conception_initial (0)
+	pl Conception_onTime (0)
+	pl Conception_tooEarly (0)
+	pl Conception_tooLate (0)
+	pl RedactionDoc_ready (1)
+	pl RedactionDoc_started (0)
+	pl RedactionDoc_running (0)
+	pl RedactionDoc_finished (0)
+	pl RedactionDoc_initial (0)
+	pl RedactionDoc_onTime (0)
+	pl RedactionDoc_tooEarly (0)
+	pl RedactionDoc_tooLate (0)
+	pl Development_ready (1)
+	pl Development_started (0)
+	pl Development_running (0)
+	pl Development_finished (0)
+	pl Development_initial (0)
+	pl Development_onTime (0)
+	pl Development_tooEarly (0)
+	pl Development_tooLate (0)
+	pl RedactionTest_ready (1)
+	pl RedactionTest_started (0)
+	pl RedactionTest_running (0)
+	pl RedactionTest_finished (0)
+	pl RedactionTest_initial (0)
+	pl RedactionTest_onTime (0)
+	pl RedactionTest_tooEarly (0)
+	pl RedactionTest_tooLate (0)
+	pl concepteur (3)
+	pl redacteur (1)
+	pl developpeur (2)
+	pl testeur (2)
+	pl machine (4)
+	net Developpement

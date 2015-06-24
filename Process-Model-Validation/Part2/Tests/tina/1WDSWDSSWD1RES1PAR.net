@@ -1,0 +1,63 @@
+	tr 1WDSWDSSWD1RES1PAR_finish [0,10] 1WDSWDSSWD1RES1PAR_running*1 WD_finished?1 ->  1WDSWDSSWD1RES1PAR_finished*1
+	tr 1WDSWDSSWD1RES1PAR_beginOnTime [0,0] 1WDSWDSSWD1RES1PAR_initial*1 1WDSWDSSWD1RES1PAR_running?1 ->  1WDSWDSSWD1RES1PAR_onTime*1
+	tr 1WDSWDSSWD1RES1PAR_isTooEarly [0,0] 1WDSWDSSWD1RES1PAR_initial*1 1WDSWDSSWD1RES1PAR_finished?1 ->  1WDSWDSSWD1RES1PAR_tooEarly*1
+	tr 1WDSWDSSWD1RES1PAR_isTooLate [10,10] 1WDSWDSSWD1RES1PAR_onTime*1 1WDSWDSSWD1RES1PAR_running?1 ->  1WDSWDSSWD1RES1PAR_tooLate*1
+	tr WD_start [0,0] WD_ready*1 machineres*5 ->  WD_started*1 WD_running*1 WD_initial*1 SWD_ready*1 machinewd_internResource*5
+	tr WD_finish [2,9] WD_running*1 SWD_finished?1 machinewd_internResource*5 ->  WD_finished*1 machineres*5
+	tr WD_beginOnTime [2,2] WD_initial*1 WD_started?1 ->  WD_onTime*1
+	tr WD_isTooEarly [0,0] WD_initial*1 WD_finished?1 ->  WD_tooEarly*1
+	tr WD_isTooLate [7,7] WD_onTime*1 WD_started?1 WD_finished?-1 ->  WD_tooLate*1
+	tr WD_break [0,w[ WD_running*1 ->  WD_inBreak*1 machineres*5
+	tr WD_stopBreak [0,w[ WD_inBreak*1 machineres*5 ->  WD_running*1
+	tr SWD_start [0,0] SWD_ready*1 machinewd_internResource*3 ->  SWD_started*1 SWD_running*1 SWD_initial*1 SSWD_ready*1 machineswd_internResource*3
+	tr SWD_finish [3,8] SWD_running*1 WD_inBreak?-1 SSWD_finished?1 machineswd_internResource*3 ->  SWD_finished*1 machinewd_internResource*3
+	tr SWD_beginOnTime [3,3] SWD_initial*1 SWD_started?1 ->  SWD_onTime*1
+	tr SWD_isTooEarly [0,0] SWD_initial*1 SWD_finished?1 ->  SWD_tooEarly*1
+	tr SWD_isTooLate [5,5] SWD_onTime*1 SWD_started?1 SWD_finished?-1 ->  SWD_tooLate*1
+	tr SWD_break [0,w[ SWD_running*1 ->  SWD_inBreak*1 machinewd_internResource*3
+	tr SWD_stopBreak [0,w[ SWD_inBreak*1 machinewd_internResource*3 ->  SWD_running*1
+	tr SSWD_start [0,0] SSWD_ready*1 machineswd_internResource*2 ->  SSWD_started*1 SSWD_running*1 SSWD_initial*1 machinesswd_internResource*2
+	tr SSWD_finish [4,7] SSWD_running*1 SWD_inBreak?-1 machinesswd_internResource*2 ->  SSWD_finished*1 machineswd_internResource*2
+	tr SSWD_beginOnTime [4,4] SSWD_initial*1 SSWD_started?1 ->  SSWD_onTime*1
+	tr SSWD_isTooEarly [0,0] SSWD_initial*1 SSWD_finished?1 ->  SSWD_tooEarly*1
+	tr SSWD_isTooLate [3,3] SSWD_onTime*1 SSWD_started?1 SSWD_finished?-1 ->  SSWD_tooLate*1
+	tr SSWD_break [0,w[ SSWD_running*1 ->  SSWD_inBreak*1 machineswd_internResource*2
+	tr SSWD_stopBreak [0,w[ SSWD_inBreak*1 machineswd_internResource*2 ->  SSWD_running*1
+	pl 1WDSWDSSWD1RES1PAR_running (1)
+	pl 1WDSWDSSWD1RES1PAR_finished (0)
+	pl 1WDSWDSSWD1RES1PAR_initial (1)
+	pl 1WDSWDSSWD1RES1PAR_onTime (0)
+	pl 1WDSWDSSWD1RES1PAR_tooEarly (0)
+	pl 1WDSWDSSWD1RES1PAR_tooLate (0)
+	pl WD_ready (1)
+	pl WD_started (0)
+	pl WD_running (0)
+	pl WD_finished (0)
+	pl WD_initial (0)
+	pl WD_onTime (0)
+	pl WD_tooEarly (0)
+	pl WD_tooLate (0)
+	pl WD_inBreak (0)
+	pl SWD_ready (0)
+	pl SWD_started (0)
+	pl SWD_running (0)
+	pl SWD_finished (0)
+	pl SWD_initial (0)
+	pl SWD_onTime (0)
+	pl SWD_tooEarly (0)
+	pl SWD_tooLate (0)
+	pl SWD_inBreak (0)
+	pl SSWD_ready (0)
+	pl SSWD_started (0)
+	pl SSWD_running (0)
+	pl SSWD_finished (0)
+	pl SSWD_initial (0)
+	pl SSWD_onTime (0)
+	pl SSWD_tooEarly (0)
+	pl SSWD_tooLate (0)
+	pl SSWD_inBreak (0)
+	pl machineres (10)
+	pl machinewd_internResource (0)
+	pl machineswd_internResource (0)
+	pl machinesswd_internResource (0)
+	net 1WDSWDSSWD1RES1PAR

@@ -1,0 +1,424 @@
+p 155.0 30.0 Developpement2_running 1 n
+p 115.0 30.0 Developpement2_initial 1 n
+t 115.0 65.0 Developpement2_beginOnTime 20 20 n
+p 115.0 95.0 Developpement2_onTime 0 n
+t 115.0 130.0 Developpement2_isTooLate 30 30 n
+p 115.0 165.0 Developpement2_tooLate 0 n
+t 155.0 65.0 Developpement2_finish 20 50 n
+p 155.0 95.0 Developpement2_finished 0 n
+t 75.0 65.0 Developpement2_isTooEarly 0 0 n
+p 75.0 95.0 Developpement2_tooEarly 0 n
+p 390.0 1235.0 SeCasserLaTete_ready 0 n
+t 390.0 1270.0 SeCasserLaTete_start 0 0 n
+p 390.0 1305.0 SeCasserLaTete_running 0 n
+p 460.0 1270.0 SeCasserLaTete_initial 0 n
+t 460.0 1305.0 SeCasserLaTete_beginOnTime 13 13 n
+p 460.0 1340.0 SeCasserLaTete_onTime 0 n
+p 510.0 1340.0 SeCasserLaTete_tooEarly 0 n
+t 510.0 1305.0 SeCasserLaTete_isTooEarly 0 0 n
+t 460.0 1375.0 SeCasserLaTete_isTooLate w 0 0 n {} ne
+p 460.0 1410.0 SeCasserLaTete_tooLate 0 n
+p 435.0 1165.0 SeCasserLaTete_machine_internResource 0 n
+p 425.0 1290.0 SeCasserLaTete_started 0 n
+t 350.0 1305.0 SeCasserLaTete_break 0 w n
+p 305.0 1305.0 SeCasserLaTete_inBreak 0 n
+t 305.0 1270.0 SeCasserLaTete_stopBreak 0 w n
+t 390.0 1340.0 SeCasserLaTete_finish 13 13 n
+p 390.0 1375.0 SeCasserLaTete_finished 0 n
+p 465.0 1170.0 SeCasserLaTete_developpeur_internResource 0 n
+p 970.0 345.0 Conception_ready 0 n
+t 970.0 380.0 Conception_start 0 0 n
+p 970.0 420.0 Conception_running 0 n
+t 970.0 460.0 Conception_finish 10 16 n
+p 970.0 500.0 Conception_finished 0 n
+p 1055.0 380.0 Conception_initial 0 n
+t 930.0 420.0 Conception_break 0 w n
+p 885.0 420.0 Conception_inBreak 0 n
+t 885.0 380.0 Conception_stopBreak 0 w n
+p 1015.0 400.0 Conception_started 0 n
+t 1055.0 420.0 Conception_beginOnTime 10 10 n
+p 1055.0 460.0 Conception_onTime 0 n
+t 1055.0 500.0 Conception_isTooLate 6 6 n
+t 1100.0 420.0 Conception_isTooEarly 0 0 n
+p 1100.0 460.0 Conception_tooEarly 0 n
+p 1055.0 540.0 Conception_tooLate 0 n
+p 1015.0 295.0 Conception_machine_internResource 0 n
+p 1045.0 300.0 Conception_concepteur_internResource 0 s
+p 215.0 655.0 RedactionDoc_ready 0 n
+t 215.0 690.0 RedactionDoc_start 0 0 n
+p 215.0 730.0 RedactionDoc_running 0 n
+t 215.0 770.0 RedactionDoc_finish 8 12 n
+p 215.0 810.0 RedactionDoc_finished 0 n
+t 170.0 730.0 RedactionDoc_break 0 w n
+p 125.0 730.0 RedactionDoc_inBreak 0 n
+t 125.0 690.0 RedactionDoc_stopBreak 0 w n
+p 305.0 690.0 RedactionDoc_initial 0 n
+t 305.0 730.0 RedactionDoc_beginOnTime 8 8 n
+p 305.0 770.0 RedactionDoc_onTime 0 n
+p 255.0 605.0 RedactionDoc_machine_internResource 0 n
+p 285.0 610.0 RedactionDoc_redacteur_internResource 0 n
+t 355.0 730.0 RedactionDoc_isTooEarly 0 0 n
+t 305.0 810.0 RedactionDoc_isTooLate 4 4 n
+p 305.0 850.0 RedactionDoc_tooLate 0 n
+p 355.0 770.0 RedactionDoc_tooEarly 0 n
+p 260.0 710.0 RedactionDoc_started 0 n
+p 1175.0 760.0 RedactionTest_ready 0 n
+t 1175.0 795.0 RedactionTest_start 0 0 n
+p 1175.0 840.0 RedactionTest_running 0 n
+t 1175.0 880.0 RedactionTest_finish 10 12 n
+p 1175.0 920.0 RedactionTest_finished 0 n
+t 1130.0 840.0 RedactionTest_break 0 w n
+p 1085.0 840.0 RedactionTest_inBreak 0 n
+t 1085.0 795.0 RedactionTest_stopBreak 0 w n
+p 1260.0 795.0 RedactionTest_initial 0 n
+t 1260.0 840.0 RedactionTest_beginOnTime 10 10 n
+p 1260.0 880.0 RedactionTest_onTime 0 n
+t 1260.0 920.0 RedactionTest_isTooLate 2 2 n
+p 1260.0 960.0 RedactionTest_tooLate 0 n
+t 1315.0 840.0 RedactionTest_isTooEarly 0 0 n
+p 1315.0 880.0 RedactionTest_tooEarly 0 n
+p 1220.0 820.0 RedactionTest_started 0 n
+p 1220.0 695.0 RedactionTest_machine_internResource 0 n
+p 1250.0 700.0 RedactionTest_testeur_internResource 0 n
+p 730.0 930.0 Development_ready 0 n
+t 730.0 970.0 Development_start 0 0 n
+p 730.0 1015.0 Development_running 0 n
+t 730.0 1060.0 Development_finish 12 14 n
+p 730.0 1105.0 Development_finished 0 n
+p 820.0 970.0 Development_initial 0 n
+t 820.0 1015.0 Development_beginOnTime 12 12 n
+p 820.0 1055.0 Development_onTime 0 n
+t 820.0 1105.0 Development_isTooLate 2 2 n
+p 820.0 1145.0 Development_tooLate 0 n
+t 880.0 1015.0 Development_isTooEarly 0 0 n
+p 880.0 1055.0 Development_tooEarly 0 n
+t 680.0 1015.0 Development_break 0 w n
+p 630.0 1015.0 Development_inBreak 0 n
+t 630.0 970.0 Development_stopBreak 0 w n
+p 780.0 990.0 Development_started 0 n
+p 1075.0 1245.0 ETLEcran_ready 0 n
+t 1075.0 1280.0 ETLEcran_start 0 0 n
+p 1075.0 1320.0 ETLEcran_running 0 n
+t 1075.0 1360.0 ETLEcran_finish 13 13 n
+p 1075.0 1400.0 ETLEcran_finished 0 n
+t 1030.0 1320.0 ETLEcran_break 0 w n
+p 980.0 1320.0 ETLEcran_inBreak 0 n
+t 980.0 1280.0 ETLEcran_stopBreak 0 w n
+p 1135.0 1190.0 EtLEcran_machine_internResource 0 n
+p 1165.0 1195.0 EtLEcran_developpeur_internResource 0 n
+p 1160.0 1280.0 ETLEcran_initial 0 n
+t 1160.0 1320.0 ETLEcran_beginOnTime 13 13 n
+p 1160.0 1360.0 ETLEcran_onTime 0 n
+t 1160.0 1400.0 ETLEcran_isTooLate 0 0 n
+p 1160.0 1440.0 ETLEcran_tooLate 0 n
+t 1210.0 1320.0 ETLEcran_isTooEarly 0 0 n
+p 1210.0 1360.0 ETLEcran_tooEarly 0 n
+p 1120.0 1300.0 ETLEcran_started 0 n
+p 405.0 250.0 Developpement_ready 1 n
+t 405.0 285.0 Developpement_start 0 0 n
+p 405.0 325.0 Developpement_running 0 n
+t 405.0 365.0 Developpement_finish 20 50 n
+p 405.0 410.0 Developpement_finished 0 n
+p 495.0 285.0 Developpement_initial 0 n
+t 495.0 320.0 Developpement_beginOnTime 20 20 n
+p 495.0 365.0 Developpement_onTime 0 n
+t 545.0 320.0 Developpement_isTooEarly 0 0 n
+t 495.0 410.0 Developpement_isTooLate 30 30 n
+p 545.0 365.0 Developpement_tooEarly 0 n
+p 495.0 450.0 Developpement_tooLate 0 n
+t 360.0 325.0 Developpement_break 0 w n
+t 305.0 285.0 Developpement_stopBreak 0 w n
+p 450.0 300.0 Developpement_started 0 n
+p 305.0 325.0 Developpement_inBreak 0 n
+p 65.0 280.0 concepteur 3 n
+p 240.0 190.0 redacteur 1 n
+p 360.0 185.0 developpeur 2 n
+p 490.0 190.0 machine 4 n
+p 620.0 210.0 testeur 2 n
+p 635.0 1195.0 Development_developpeur_internResource 0 n
+p 770.0 1200.0 Development_machine_internResource 0 sw
+p 485.0 845.0 Developpement_developpeur_internResource 0 n
+p 170.0 515.0 Developpement_redacteur_internResource 0 n
+p 730.0 785.0 Developpement_machine_internResource 0 n
+p 1075.0 710.0 Developpement_testeur_internResource 0 n
+p 780.0 300.0 Developpement_concepteur_internResource 0 e
+e Developpement2_running Developpement2_finish 1 n
+e Developpement_finished Developpement2_finish ?1 n
+e Developpement2_finish Developpement2_finished 1 n
+e Developpement2_initial Developpement2_beginOnTime 1 n
+e Developpement2_running Developpement2_beginOnTime ?1 n
+e Developpement2_beginOnTime Developpement2_onTime 1 n
+e Developpement2_initial Developpement2_isTooEarly 1 n
+e Developpement2_finished Developpement2_isTooEarly ?1 n
+e Developpement2_isTooEarly Developpement2_tooEarly 1 n
+e Developpement2_onTime Developpement2_isTooLate 1 n
+e Developpement2_running Developpement2_isTooLate ?1 n
+e Developpement2_isTooLate Developpement2_tooLate 1 n
+e concepteur Developpement_start 3 n
+e redacteur Developpement_start 1 n
+e developpeur Developpement_start 2 n
+e machine Developpement_start 4 n
+e testeur Developpement_start 2 n
+e Developpement_ready Developpement_start 1 n
+e Developpement_start Developpement_concepteur_internResource 3 n
+e Developpement_start Developpement_redacteur_internResource 1 n
+e Developpement_start Developpement_developpeur_internResource 2 n
+e Developpement_start Developpement_machine_internResource 4 n
+e Developpement_start Developpement_testeur_internResource 2 n
+e Developpement_start RedactionTest_ready 1 n
+e Developpement_start Development_ready 1 n
+e Developpement_start RedactionDoc_ready 1 n
+e Developpement_start Conception_ready 1 n
+e Developpement_start Developpement_initial 1 n
+e Developpement_start Developpement_running 1 n
+e Developpement_start Developpement_started 1 n
+e Developpement_concepteur_internResource Developpement_finish 3 n
+e Developpement_redacteur_internResource Developpement_finish 1 n
+e Developpement_developpeur_internResource Developpement_finish 2 n
+e Developpement_machine_internResource Developpement_finish 4 n
+e Developpement_testeur_internResource Developpement_finish 2 n
+e Developpement_running Developpement_finish 1 n
+e RedactionTest_finished Developpement_finish ?1 n
+e Development_finished Developpement_finish ?1 n
+e RedactionDoc_finished Developpement_finish ?1 n
+e Conception_finished Developpement_finish ?1 n
+e Developpement_finish concepteur 3 n
+e Developpement_finish redacteur 1 n
+e Developpement_finish developpeur 2 n
+e Developpement_finish machine 4 n
+e Developpement_finish testeur 2 n
+e Developpement_finish Developpement_finished 1 n
+e Developpement_initial Developpement_beginOnTime 1 n
+e Developpement_started Developpement_beginOnTime ?1 n
+e Developpement_beginOnTime Developpement_onTime 1 n
+e Developpement_initial Developpement_isTooEarly 1 n
+e Developpement_finished Developpement_isTooEarly ?1 n
+e Developpement_isTooEarly Developpement_tooEarly 1 n
+e Developpement_onTime Developpement_isTooLate 1 n
+e Developpement_started Developpement_isTooLate ?1 n
+e Developpement_finished Developpement_isTooLate ?-1 n
+e Developpement_isTooLate Developpement_tooLate 1 n
+e Developpement_running Developpement_break 1 n
+e Developpement_break concepteur 3 n
+e Developpement_break redacteur 1 n
+e Developpement_break developpeur 2 n
+e Developpement_break machine 4 n
+e Developpement_break testeur 2 n
+e Developpement_break Developpement_inBreak 1 n
+e concepteur Developpement_stopBreak 3 n
+e redacteur Developpement_stopBreak 1 n
+e developpeur Developpement_stopBreak 2 n
+e machine Developpement_stopBreak 4 n
+e testeur Developpement_stopBreak 2 n
+e Developpement_inBreak Developpement_stopBreak 1 n
+e Developpement_stopBreak Developpement_running 1 n
+e Developpement_machine_internResource Conception_start 2 n
+e Developpement_concepteur_internResource Conception_start 2 n
+e Conception_ready Conception_start 1 n
+e Conception_start Conception_machine_internResource 2 n
+e Conception_start Conception_concepteur_internResource 2 n
+e Conception_start Conception_initial 1 n
+e Conception_start Conception_running 1 n
+e Conception_start Conception_started 1 n
+e Conception_machine_internResource Conception_finish 2 n
+e Conception_concepteur_internResource Conception_finish 2 n
+e Conception_running Conception_finish 1 n
+e Developpement_inBreak Conception_finish ?-1 n
+e Conception_finish Developpement_machine_internResource 2 n
+e Conception_finish Developpement_concepteur_internResource 2 n
+e Conception_finish Conception_finished 1 n
+e Conception_initial Conception_beginOnTime 1 n
+e Conception_started Conception_beginOnTime ?1 n
+e Conception_beginOnTime Conception_onTime 1 n
+e Conception_initial Conception_isTooEarly 1 n
+e Conception_finished Conception_isTooEarly ?1 n
+e Conception_isTooEarly Conception_tooEarly 1 n
+e Conception_onTime Conception_isTooLate 1 n
+e Conception_started Conception_isTooLate ?1 n
+e Conception_finished Conception_isTooLate ?-1 n
+e Conception_isTooLate Conception_tooLate 1 n
+e Conception_running Conception_break 1 n
+e Conception_break Developpement_machine_internResource 2 n
+e Conception_break Developpement_concepteur_internResource 2 n
+e Conception_break Conception_inBreak 1 n
+e Developpement_machine_internResource Conception_stopBreak 2 n
+e Developpement_concepteur_internResource Conception_stopBreak 2 n
+e Conception_inBreak Conception_stopBreak 1 n
+e Conception_stopBreak Conception_running 1 n
+e Developpement_machine_internResource RedactionDoc_start 1 n
+e Developpement_redacteur_internResource RedactionDoc_start 1 n
+e RedactionDoc_ready RedactionDoc_start 1 n
+e Conception_started RedactionDoc_start ?1 n
+e RedactionDoc_start RedactionDoc_machine_internResource 1 n
+e RedactionDoc_start RedactionDoc_redacteur_internResource 1 n
+e RedactionDoc_start RedactionDoc_initial 1 n
+e RedactionDoc_start RedactionDoc_running 1 n
+e RedactionDoc_start RedactionDoc_started 1 n
+e RedactionDoc_machine_internResource RedactionDoc_finish 1 n
+e RedactionDoc_redacteur_internResource RedactionDoc_finish 1 n
+e RedactionDoc_running RedactionDoc_finish 1 n
+e Conception_finished RedactionDoc_finish ?1 n
+e Developpement_inBreak RedactionDoc_finish ?-1 n
+e RedactionDoc_finish Developpement_machine_internResource 1 n
+e RedactionDoc_finish Developpement_redacteur_internResource 1 n
+e RedactionDoc_finish RedactionDoc_finished 1 n
+e RedactionDoc_initial RedactionDoc_beginOnTime 1 n
+e RedactionDoc_started RedactionDoc_beginOnTime ?1 n
+e RedactionDoc_beginOnTime RedactionDoc_onTime 1 n
+e RedactionDoc_initial RedactionDoc_isTooEarly 1 n
+e RedactionDoc_finished RedactionDoc_isTooEarly ?1 n
+e RedactionDoc_isTooEarly RedactionDoc_tooEarly 1 n
+e RedactionDoc_onTime RedactionDoc_isTooLate 1 n
+e RedactionDoc_started RedactionDoc_isTooLate ?1 n
+e RedactionDoc_finished RedactionDoc_isTooLate ?-1 n
+e RedactionDoc_isTooLate RedactionDoc_tooLate 1 n
+e RedactionDoc_running RedactionDoc_break 1 n
+e RedactionDoc_break Developpement_machine_internResource 1 n
+e RedactionDoc_break Developpement_redacteur_internResource 1 n
+e RedactionDoc_break RedactionDoc_inBreak 1 n
+e Developpement_machine_internResource RedactionDoc_stopBreak 1 n
+e Developpement_redacteur_internResource RedactionDoc_stopBreak 1 n
+e RedactionDoc_inBreak RedactionDoc_stopBreak 1 n
+e RedactionDoc_stopBreak RedactionDoc_running 1 n
+e Developpement_machine_internResource Development_start 3 n
+e Developpement_developpeur_internResource Development_start 2 n
+e Development_ready Development_start 1 n
+e Conception_finished Development_start ?1 n
+e Development_start Development_machine_internResource 3 n
+e Development_start Development_developpeur_internResource 2 n
+e Development_start ETLEcran_ready 1 n
+e Development_start SeCasserLaTete_ready 1 n
+e Development_start Development_initial 1 n
+e Development_start Development_running 1 n
+e Development_start Development_started 1 n
+e Development_machine_internResource Development_finish 3 n
+e Development_developpeur_internResource Development_finish 2 n
+e Development_running Development_finish 1 n
+e ETLEcran_finished Development_finish ?1 n
+e SeCasserLaTete_finished Development_finish ?1 n
+e Developpement_inBreak Development_finish ?-1 n
+e Development_finish Developpement_machine_internResource 3 n
+e Development_finish Developpement_developpeur_internResource 2 n
+e Development_finish Development_finished 1 n
+e Development_initial Development_beginOnTime 1 n
+e Development_started Development_beginOnTime ?1 n
+e Development_beginOnTime Development_onTime 1 n
+e Development_initial Development_isTooEarly 1 n
+e Development_finished Development_isTooEarly ?1 n
+e Development_isTooEarly Development_tooEarly 1 n
+e Development_onTime Development_isTooLate 1 n
+e Development_started Development_isTooLate ?1 n
+e Development_finished Development_isTooLate ?-1 n
+e Development_isTooLate Development_tooLate 1 n
+e Development_running Development_break 1 n
+e Development_break Developpement_machine_internResource 3 n
+e Development_break Developpement_developpeur_internResource 2 n
+e Development_break Development_inBreak 1 n
+e Developpement_machine_internResource Development_stopBreak 3 n
+e Developpement_developpeur_internResource Development_stopBreak 2 n
+e Development_inBreak Development_stopBreak 1 n
+e Development_stopBreak Development_running 1 n
+e Developpement_machine_internResource RedactionTest_start 2 n
+e Developpement_testeur_internResource RedactionTest_start 1 n
+e RedactionTest_ready RedactionTest_start 1 n
+e Conception_started RedactionTest_start ?1 n
+e RedactionTest_start RedactionTest_machine_internResource 2 n
+e RedactionTest_start RedactionTest_testeur_internResource 1 n
+e RedactionTest_start RedactionTest_initial 1 n
+e RedactionTest_start RedactionTest_running 1 n
+e RedactionTest_start RedactionTest_started 1 n
+e RedactionTest_machine_internResource RedactionTest_finish 2 n
+e RedactionTest_testeur_internResource RedactionTest_finish 1 n
+e RedactionTest_running RedactionTest_finish 1 n
+e Development_finished RedactionTest_finish ?1 n
+e Developpement_inBreak RedactionTest_finish ?-1 n
+e RedactionTest_finish Developpement_machine_internResource 2 n
+e RedactionTest_finish Developpement_testeur_internResource 1 n
+e RedactionTest_finish RedactionTest_finished 1 n
+e RedactionTest_initial RedactionTest_beginOnTime 1 n
+e RedactionTest_started RedactionTest_beginOnTime ?1 n
+e RedactionTest_beginOnTime RedactionTest_onTime 1 n
+e RedactionTest_initial RedactionTest_isTooEarly 1 n
+e RedactionTest_finished RedactionTest_isTooEarly ?1 n
+e RedactionTest_isTooEarly RedactionTest_tooEarly 1 n
+e RedactionTest_onTime RedactionTest_isTooLate 1 n
+e RedactionTest_started RedactionTest_isTooLate ?1 n
+e RedactionTest_finished RedactionTest_isTooLate ?-1 n
+e RedactionTest_isTooLate RedactionTest_tooLate 1 n
+e RedactionTest_running RedactionTest_break 1 n
+e RedactionTest_break Developpement_machine_internResource 2 n
+e RedactionTest_break Developpement_testeur_internResource 1 n
+e RedactionTest_break RedactionTest_inBreak 1 n
+e Developpement_machine_internResource RedactionTest_stopBreak 2 n
+e Developpement_testeur_internResource RedactionTest_stopBreak 1 n
+e RedactionTest_inBreak RedactionTest_stopBreak 1 n
+e RedactionTest_stopBreak RedactionTest_running 1 n
+e Development_machine_internResource SeCasserLaTete_start 1 n
+e Development_developpeur_internResource SeCasserLaTete_start 3 n
+e SeCasserLaTete_ready SeCasserLaTete_start 1 n
+e SeCasserLaTete_start SeCasserLaTete_machine_internResource 1 n
+e SeCasserLaTete_start SeCasserLaTete_developpeur_internResource 3 n
+e SeCasserLaTete_start SeCasserLaTete_initial 1 n
+e SeCasserLaTete_start SeCasserLaTete_running 1 n
+e SeCasserLaTete_start SeCasserLaTete_started 1 n
+e SeCasserLaTete_machine_internResource SeCasserLaTete_finish 1 n
+e SeCasserLaTete_developpeur_internResource SeCasserLaTete_finish 3 n
+e SeCasserLaTete_running SeCasserLaTete_finish 1 n
+e Development_inBreak SeCasserLaTete_finish ?-1 n
+e SeCasserLaTete_finish Development_machine_internResource 1 n
+e SeCasserLaTete_finish Development_developpeur_internResource 3 n
+e SeCasserLaTete_finish SeCasserLaTete_finished 1 n
+e SeCasserLaTete_initial SeCasserLaTete_beginOnTime 1 n
+e SeCasserLaTete_started SeCasserLaTete_beginOnTime ?1 n
+e SeCasserLaTete_beginOnTime SeCasserLaTete_onTime 1 n
+e SeCasserLaTete_initial SeCasserLaTete_isTooEarly 1 n
+e SeCasserLaTete_finished SeCasserLaTete_isTooEarly ?1 n
+e SeCasserLaTete_isTooEarly SeCasserLaTete_tooEarly 1 n
+e SeCasserLaTete_onTime SeCasserLaTete_isTooLate 1 n
+e SeCasserLaTete_started SeCasserLaTete_isTooLate ?1 n
+e SeCasserLaTete_finished SeCasserLaTete_isTooLate ?-1 n
+e SeCasserLaTete_isTooLate SeCasserLaTete_tooLate 1 n
+e SeCasserLaTete_running SeCasserLaTete_break 1 n
+e SeCasserLaTete_break Development_machine_internResource 1 n
+e SeCasserLaTete_break Development_developpeur_internResource 3 n
+e SeCasserLaTete_break SeCasserLaTete_inBreak 1 n
+e Development_machine_internResource SeCasserLaTete_stopBreak 1 n
+e Development_developpeur_internResource SeCasserLaTete_stopBreak 3 n
+e SeCasserLaTete_inBreak SeCasserLaTete_stopBreak 1 n
+e SeCasserLaTete_stopBreak SeCasserLaTete_running 1 n
+e Development_machine_internResource ETLEcran_start 1 n
+e Development_developpeur_internResource ETLEcran_start 1 n
+e ETLEcran_ready ETLEcran_start 1 n
+e ETLEcran_start EtLEcran_machine_internResource 1 n
+e ETLEcran_start EtLEcran_developpeur_internResource 1 n
+e ETLEcran_start ETLEcran_initial 1 n
+e ETLEcran_start ETLEcran_running 1 n
+e ETLEcran_start ETLEcran_started 1 n
+e EtLEcran_machine_internResource ETLEcran_finish 1 n
+e EtLEcran_developpeur_internResource ETLEcran_finish 1 n
+e ETLEcran_running ETLEcran_finish 1 n
+e Development_inBreak ETLEcran_finish ?-1 n
+e ETLEcran_finish Development_machine_internResource 1 n
+e ETLEcran_finish Development_developpeur_internResource 1 n
+e ETLEcran_finish ETLEcran_finished 1 n
+e ETLEcran_initial ETLEcran_beginOnTime 1 n
+e ETLEcran_started ETLEcran_beginOnTime ?1 n
+e ETLEcran_beginOnTime ETLEcran_onTime 1 n
+e ETLEcran_initial ETLEcran_isTooEarly 1 n
+e ETLEcran_finished ETLEcran_isTooEarly ?1 n
+e ETLEcran_isTooEarly ETLEcran_tooEarly 1 n
+e ETLEcran_onTime ETLEcran_isTooLate 1 n
+e ETLEcran_started ETLEcran_isTooLate ?1 n
+e ETLEcran_finished ETLEcran_isTooLate ?-1 n
+e ETLEcran_isTooLate ETLEcran_tooLate 1 n
+e ETLEcran_running ETLEcran_break 1 n
+e ETLEcran_break Development_machine_internResource 1 n
+e ETLEcran_break Development_developpeur_internResource 1 n
+e ETLEcran_break ETLEcran_inBreak 1 n
+e Development_machine_internResource ETLEcran_stopBreak 1 n
+e Development_developpeur_internResource ETLEcran_stopBreak 1 n
+e ETLEcran_inBreak ETLEcran_stopBreak 1 n
+e ETLEcran_stopBreak ETLEcran_running 1 n
+h Developpement2 small
+
+

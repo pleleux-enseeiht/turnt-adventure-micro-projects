@@ -1,0 +1,82 @@
+p 220.0 40.0 Developpement_ready 1 n
+p 775.0 120.0 RedactionTests_ready 1 n
+t 775.0 180.0 RedactionTests_start 0 0 n
+p 775.0 240.0 RedactionTests_running 0 n
+t 775.0 300.0 RedactionTests_finish 9 16 n
+p 775.0 360.0 RedactionTests_finished 0 n
+p 855.0 180.0 RedactionTests_started 0 n
+p 685.0 180.0 RedactionTests_initial 0 n
+t 685.0 240.0 RedactionTests_beginOnTime 10 10 n
+p 685.0 300.0 RedactionTests_onTime 0 n
+t 685.0 365.0 RedactionTests_deadline 5 5 n
+p 685.0 425.0 RedactionTests_AfterDeadline 0 n
+t 685.0 490.0 RedactionTests_isTooLate 0 0 n
+p 685.0 550.0 RedactionTests_tooLate 0 n
+t 605.0 490.0 RedactionTests_isTooEarly 0 0 n
+p 605.0 550.0 RedactionTests_tooEarly 0 n
+t 220.0 100.0 Developpement_start 0 0 n
+p 150.0 100.0 Developpement_initial 0 n
+p 220.0 165.0 Developpement_running 0 n
+t 150.0 165.0 Developpement_beginOnTime 12 12 n
+p 150.0 220.0 Developpement_onTime 0 n
+t 150.0 280.0 Developpement_deadline 2 2 n
+p 150.0 340.0 Developpement_AfterDeadline 0 n
+t 150.0 395.0 Developpement_isTooLate 0 0 n
+p 150.0 455.0 Developpement_tooLate 0 n
+p 875.0 235.0 Testeur 2 n
+t 70.0 395.0 Developpement_isTooEarly 0 0 n
+p 70.0 455.0 Developpement_tooEarly 0 n
+t 220.0 220.0 Developpement_finish 11 15 n
+p 220.0 280.0 Developpement_finished 0 n
+p 295.0 165.0 Developpeur 2 n
+p 275.0 100.0 Developpement_started 0 n
+p 655.0 30.0 Machine 4 n
+e Machine Developpement_start 3 n
+e Developpeur Developpement_start 2 n
+e Developpement_ready Developpement_start 1 n
+e Developpement_start Developpement_initial 1 n
+e Developpement_start Developpement_running 1 n
+e Developpement_start Developpement_started 1 n
+e Developpement_running Developpement_finish 1 n
+e Developpement_finish Machine 3 n
+e Developpement_finish Developpeur 2 n
+e Developpement_finish Developpement_finished 1 n
+e Developpement_initial Developpement_beginOnTime 1 n
+e Developpement_running Developpement_beginOnTime ?1 n
+e Developpement_beginOnTime Developpement_onTime 1 n
+e Developpement_onTime Developpement_deadline 1 n
+e Developpement_running Developpement_deadline ?1 n
+e Developpement_deadline Developpement_AfterDeadline 1 n
+e Developpement_initial Developpement_isTooEarly 1 n
+e Developpement_finished 0.75 148.0 Developpement_isTooEarly 0.8034406792 157.8131807 ?1 n
+e Developpement_isTooEarly Developpement_tooEarly 1 n
+e Developpement_AfterDeadline Developpement_isTooLate 1 n
+e Developpement_running Developpement_isTooLate ?1 n
+e Developpement_isTooLate Developpement_tooLate 1 n
+e Machine RedactionTests_start 2 n
+e Testeur RedactionTests_start 1 n
+e RedactionTests_ready RedactionTests_start 1 n
+e Developpement_started RedactionTests_start ?1 n
+e RedactionTests_start RedactionTests_initial 1 n
+e RedactionTests_start RedactionTests_running 1 n
+e RedactionTests_start RedactionTests_started 1 n
+e RedactionTests_running RedactionTests_finish 1 n
+e Developpement_finished 0.02480719471 141.7180299 RedactionTests_finish 0.4563307562 140.2462121 ?1 n
+e RedactionTests_finish Machine 2 n
+e RedactionTests_finish Testeur 1 n
+e RedactionTests_finish RedactionTests_finished 1 n
+e RedactionTests_initial RedactionTests_beginOnTime 1 n
+e RedactionTests_running RedactionTests_beginOnTime ?1 n
+e RedactionTests_beginOnTime RedactionTests_onTime 1 n
+e RedactionTests_onTime RedactionTests_deadline 1 n
+e RedactionTests_running RedactionTests_deadline ?1 n
+e RedactionTests_deadline RedactionTests_AfterDeadline 1 n
+e RedactionTests_initial RedactionTests_isTooEarly 1 n
+e RedactionTests_finished 0.7461502282 124.036285 RedactionTests_isTooEarly 0.8075468752 166.7842918 ?1 n
+e RedactionTests_isTooEarly RedactionTests_tooEarly 1 n
+e RedactionTests_AfterDeadline RedactionTests_isTooLate 1 n
+e RedactionTests_running RedactionTests_isTooLate ?1 n
+e RedactionTests_isTooLate RedactionTests_tooLate 1 n
+h test2etapes small
+
+

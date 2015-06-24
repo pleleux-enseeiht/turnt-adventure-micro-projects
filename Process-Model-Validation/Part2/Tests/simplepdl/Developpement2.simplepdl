@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl" name="Developpement2" min_time="20" max_time="50">
+  <processElements xsi:type="simplepdl:WorkDefinition" name="Developpement" min_time="20" max_time="50" children="//@processElements.1 //@processElements.2 //@processElements.3 //@processElements.4" needsWD="//@processElements.5 //@processElements.6 //@processElements.7 //@processElements.8 //@processElements.9"/>
+  <processElements xsi:type="simplepdl:SubWorkDefinition" name="Conception" min_time="10" max_time="16" linksToSuccessors="//@processElements.24 //@processElements.25 //@processElements.26 //@processElements.27" parent="//@processElements.0" needsSWD="//@processElements.10 //@processElements.11"/>
+  <processElements xsi:type="simplepdl:SubWorkDefinition" name="RedactionDoc" min_time="8" max_time="12" linksToPredecessors="//@processElements.24 //@processElements.25" parent="//@processElements.0" needsSWD="//@processElements.13 //@processElements.12"/>
+  <processElements xsi:type="simplepdl:SubWorkDefinition" name="Development" min_time="12" max_time="14" linksToPredecessors="//@processElements.26" linksToSuccessors="//@processElements.28" children="//@processElements.22 //@processElements.23" parent="//@processElements.0" needsSWD="//@processElements.17 //@processElements.16"/>
+  <processElements xsi:type="simplepdl:SubWorkDefinition" name="RedactionTest" min_time="10" max_time="12" linksToPredecessors="//@processElements.27 //@processElements.28" parent="//@processElements.0" needsSWD="//@processElements.14 //@processElements.15"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="Developpement_testeur" nbNeeds="2" resource="//@resources.3" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="Developpement_machine" nbNeeds="4" resource="//@resources.4" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="Developpement_developpeur" nbNeeds="2" resource="//@resources.2" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="Developpement_redacteur" nbNeeds="1" resource="//@resources.1" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="Developpement_concepteur" nbNeeds="3" resource="//@resources.0" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="Conception_concepteur" nbNeeds="2" internResource="//@processElements.9" subWorkDefinition="//@processElements.1"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="Conception_machine" nbNeeds="2" internResource="//@processElements.6" subWorkDefinition="//@processElements.1"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="RedactionDoc_redacteur" nbNeeds="1" internResource="//@processElements.8" subWorkDefinition="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="RedactionDoc_machine" nbNeeds="1" internResource="//@processElements.6" subWorkDefinition="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="RedactionTest_testeur" nbNeeds="1" internResource="//@processElements.5" subWorkDefinition="//@processElements.4"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="RedactionTest_machine" nbNeeds="2" internResource="//@processElements.6" subWorkDefinition="//@processElements.4"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="Development_developpeur" nbNeeds="2" internResource="//@processElements.7" subWorkDefinition="//@processElements.3"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="Development_machine" nbNeeds="3" internResource="//@processElements.6" subWorkDefinition="//@processElements.3"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="SeCasserLaTete_developpeur" nbNeeds="3" internResource="//@processElements.16" subWorkDefinition="//@processElements.22"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="SeCasserLaTete_machine" nbNeeds="1" internResource="//@processElements.17" subWorkDefinition="//@processElements.22"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="EtLEcran_developpeur" nbNeeds="1" internResource="//@processElements.16" subWorkDefinition="//@processElements.23"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="EtLEcran_machine" nbNeeds="1" internResource="//@processElements.17" subWorkDefinition="//@processElements.23"/>
+  <processElements xsi:type="simplepdl:SubWorkDefinition" name="SeCasserLaTete" min_time="13" max_time="13" parent="//@processElements.3" needsSWD="//@processElements.18 //@processElements.19"/>
+  <processElements xsi:type="simplepdl:SubWorkDefinition" name="ETLEcran" min_time="13" max_time="13" parent="//@processElements.3" needsSWD="//@processElements.20 //@processElements.21"/>
+  <processElements xsi:type="simplepdl:WorkSequence" predecessor="//@processElements.1" successor="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToFinish" predecessor="//@processElements.1" successor="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToStart" predecessor="//@processElements.1" successor="//@processElements.3"/>
+  <processElements xsi:type="simplepdl:WorkSequence" predecessor="//@processElements.1" successor="//@processElements.4"/>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToFinish" predecessor="//@processElements.3" successor="//@processElements.4"/>
+  <resources name="concepteur" marking="3"/>
+  <resources name="redacteur" marking="1"/>
+  <resources name="developpeur" marking="2"/>
+  <resources name="testeur" marking="2"/>
+  <resources name="machine" marking="4"/>
+</simplepdl:Process>

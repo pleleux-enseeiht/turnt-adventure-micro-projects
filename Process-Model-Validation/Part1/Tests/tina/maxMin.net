@@ -1,0 +1,24 @@
+	tr maxMin_finish [15,15] maxMin_running*1 Conception_finished?1 ->  maxMin_finished*1
+	tr maxMin_beginOnTime [12,12] maxMin_initial*1 maxMin_running?1 ->  maxMin_onTime*1
+	tr maxMin_isTooEarly [0,0] maxMin_initial*1 maxMin_finished?1 ->  maxMin_tooEarly*1
+	tr maxMin_isTooLate [0,0] maxMin_onTime*1 maxMin_running?1 ->  maxMin_tooLate*1
+	tr Conception_start [0,0] Conception_ready*1 ->  Conception_started*1 Conception_running*1 Conception_initial*1
+	tr Conception_finish [12,12] Conception_running*1 ->  Conception_finished*1
+	tr Conception_beginOnTime [15,15] Conception_initial*1 Conception_running?1 ->  Conception_onTime*1
+	tr Conception_isTooEarly [0,0] Conception_initial*1 Conception_finished?1 ->  Conception_tooEarly*1
+	tr Conception_isTooLate [0,0] Conception_onTime*1 Conception_running?1 ->  Conception_tooLate*1
+	pl maxMin_running (1)
+	pl maxMin_finished (0)
+	pl maxMin_initial (1)
+	pl maxMin_onTime (0)
+	pl maxMin_tooEarly (0)
+	pl maxMin_tooLate (0)
+	pl Conception_ready (1)
+	pl Conception_started (0)
+	pl Conception_running (0)
+	pl Conception_finished (0)
+	pl Conception_initial (0)
+	pl Conception_onTime (0)
+	pl Conception_tooEarly (0)
+	pl Conception_tooLate (0)
+	net maxMin

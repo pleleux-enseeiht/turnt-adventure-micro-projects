@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl" name="1Wd1ressource" min_time="12" max_time="16">
+  <processElements xsi:type="simplepdl:WorkDefinition" min_time="12" needs="//@processElements.1" max_time="16" name="Conception"/>
+  <processElements xsi:type="simplepdl:Parameter" resource="//@resources.0" nbNeeds="2" name="concepteur" workDefinition="//@processElements.0"/>
+  <resources name="Concepteur" marking="4"/>
+</simplepdl:Process>

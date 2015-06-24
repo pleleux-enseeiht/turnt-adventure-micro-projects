@@ -1,0 +1,39 @@
+p 240.0 135.0 Conception_initial 0 n
+t 465.0 135.0 Conception_start s 0 0 n {} ne
+p 465.0 50.0 Conception_ready 1 n
+p 465.0 230.0 Conception_running 0 n
+t 465.0 320.0 Conception_finish s 11 17 n {} ne
+p 465.0 420.0 Conception_finished 0 n
+p 645.0 230.0 Concepteur 4 n
+p 600.0 135.0 Conception_started 0 n
+t 240.0 230.0 Conception_beginOnTime s 12 12 n {} ne
+p 240.0 320.0 Conception_onTime 0 n
+t 240.0 420.0 Conception_deadline se 6 6 n {} ne
+p 240.0 515.0 Conception_AfterDeadline 0 n
+t 240.0 610.0 Conception_isTooLate s 0 0 n {} ne
+p 240.0 710.0 Conception_tooLate 0 n
+t 85.0 605.0 Conception_isTooEarly s 0 0 n {} ne
+p 85.0 710.0 Conception_tooEarly 0 n
+e Concepteur Conception_start 2 n
+e Conception_ready Conception_start 1 n
+e Conception_start Conception_initial 1 n
+e Conception_start Conception_running 1 n
+e Conception_start Conception_started 1 n
+e Conception_running Conception_finish 1 n
+e Conception_finish Concepteur 2 n
+e Conception_finish Conception_finished 1 n
+e Conception_initial Conception_beginOnTime 1 n
+e Conception_running Conception_beginOnTime ?1 n
+e Conception_beginOnTime Conception_onTime 1 n
+e Conception_onTime Conception_deadline 1 n
+e Conception_running Conception_deadline ?1 n
+e Conception_deadline Conception_AfterDeadline 1 n
+e Conception_initial Conception_isTooEarly 1 n
+e Conception_finished 0.7281852408 292.7456234 Conception_isTooEarly 0.8262895513 199.4818287 ?1 n
+e Conception_isTooEarly Conception_tooEarly 1 n
+e Conception_AfterDeadline Conception_isTooLate 1 n
+e Conception_running Conception_isTooLate ?1 n
+e Conception_isTooLate Conception_tooLate 1 n
+h 1Wd1ressource
+
+

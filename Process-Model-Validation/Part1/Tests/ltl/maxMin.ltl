@@ -1,0 +1,26 @@
+# Generated ltl file (maxMin)
+
+############################
+# Definitions d'operations #
+############################
+prefix ! p = - p;			# Negation
+infix p & q = p /\ q;		# And
+infix p | q = p \/ q;		# Or
+infix q suit p = [](p => <> q); # Sequence
+op finished =  Conception_finished & maxMin_finished;
+#########################
+# Proprietes a verifier #
+#########################
+### Partie I
+## General
+	finished => (<> ([] finished));
+	[] ! finished; # non accessible
+	[] ! (maxMin_finished & !Conception_finished);
+## Ressources
+## Regles sur les WorkSequence
+
+# Restitution des ressources
+
+	[] (Conception_ready | Conception_running | Conception_finished | Conception_running) ;
+	[] (maxMin_running | maxMin_finished);
+

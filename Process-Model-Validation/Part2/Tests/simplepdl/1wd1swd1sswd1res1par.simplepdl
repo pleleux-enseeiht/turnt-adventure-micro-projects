@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl" name="1WDSWDSSWD1RES1PAR" max_time="10">
+  <processElements xsi:type="simplepdl:WorkDefinition" name="WD" min_time="2" max_time="9" children="//@processElements.1" needsWD="//@processElements.3"/>
+  <processElements xsi:type="simplepdl:SubWorkDefinition" name="SWD" min_time="3" max_time="8" children="//@processElements.2" parent="//@processElements.0" needsSWD="//@processElements.4"/>
+  <processElements xsi:type="simplepdl:SubWorkDefinition" name="SSWD" min_time="4" max_time="7" parent="//@processElements.1" needsSWD="//@processElements.5"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="machinewd" nbNeeds="5" resource="//@resources.0" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="machineswd" nbNeeds="3" internResource="//@processElements.3" subWorkDefinition="//@processElements.1"/>
+  <processElements xsi:type="simplepdl:ParameterSWD" name="machinesswd" nbNeeds="2" internResource="//@processElements.4" subWorkDefinition="//@processElements.2"/>
+  <resources name="machineres" marking="10"/>
+</simplepdl:Process>

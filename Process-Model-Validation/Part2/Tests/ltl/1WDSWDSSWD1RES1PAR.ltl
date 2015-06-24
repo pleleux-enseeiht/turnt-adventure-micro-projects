@@ -1,0 +1,43 @@
+# Generated ltl file (1WDSWDSSWD1RES1PAR)
+
+############################
+# Definitions d'operations #
+############################
+prefix ! p = - p;			# Negation
+infix p & q = p /\ q;		# And
+infix p | q = p \/ q;		# Or
+infix q suit p = [](p => <> q); # Sequence
+op finished = SWD_finished & SSWD_finished &  WD_finished & 1WDSWDSSWD1RES1PAR_finished;
+#########################
+# Proprietes a verifier #
+#########################
+### Partie I
+## General
+	[] (dead => finished);
+	finished => (<> ([] finished));
+	[] ! finished; # non accessible
+	[] ! (1WDSWDSSWD1RES1PAR_finished & !SWD_finished);
+	[] ! (1WDSWDSSWD1RES1PAR_finished & !SSWD_finished);
+	[] ! (1WDSWDSSWD1RES1PAR_finished & !WD_finished);
+## Ressources
+	[] (machineres <= 10) ;
+## Regles sur les WorkSequence
+
+# Restitution des ressources
+	finished => (machineres = 10);
+
+### Partie II
+
+## Decomposition d'une activite
+	finished => (SWD_started suit WD_started);
+	finished => (WD_finished suit SWD_finished);
+	finished => (SSWD_started suit SWD_started);
+	finished => (SWD_finished suit SSWD_finished);
+## Gestion plus fine des ressources
+# Ressource interne <= Ressource disponible
+	[] (machinewd_internResource <= 10);
+	[] (WD_ready | WD_running | WD_inBreak | WD_finished | WD_running) ;
+	[] (1WDSWDSSWD1RES1PAR_running | 1WDSWDSSWD1RES1PAR_finished);
+# p_running suit p_inBreak
+	finished => (WD_inBreak => <> WD_running);
+

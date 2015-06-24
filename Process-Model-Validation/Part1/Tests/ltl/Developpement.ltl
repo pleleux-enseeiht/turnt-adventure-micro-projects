@@ -1,0 +1,44 @@
+# Generated ltl file (Developpement)
+
+############################
+# Definitions d'operations #
+############################
+prefix ! p = - p;			# Negation
+infix p & q = p /\ q;		# And
+infix p | q = p \/ q;		# Or
+infix q suit p = [](p => <> q); # Sequence
+op finished =  Conception_finished &  RedactionDoc_finished &  Development_finished &  RedactionTest_finished & Developpement_finished;
+#########################
+# Proprietes a verifier #
+#########################
+### Partie I
+## General
+	finished => (<> ([] finished));
+	[] ! finished; # non accessible
+	[] ! (Developpement_finished & !Conception_finished);
+	[] ! (Developpement_finished & !RedactionDoc_finished);
+	[] ! (Developpement_finished & !Development_finished);
+	[] ! (Developpement_finished & !RedactionTest_finished);
+## Ressources
+	[] (concepteur <= 3) ;
+	[] (redacteur <= 1) ;
+	[] (developpeur <= 2) ;
+	[] (testeur <= 2) ;
+	[] (machine <= 4) ;
+## Regles sur les WorkSequence
+	finished => ([] (RedactionDoc_started => (<> Conception_finished)));
+	finished => ([] (Development_started => (<> Conception_finished)));
+	finished => ([] (RedactionDoc_started => (<> Conception_finished)));
+	finished => ([] (RedactionTest_started => (<> Conception_finished)));
+	finished => ([] (RedactionTest_started => (<> Development_finished)));
+
+# Restitution des ressources
+	finished => (concepteur = 3);
+	finished => (redacteur = 1);
+	finished => (developpeur = 2);
+	finished => (testeur = 2);
+	finished => (machine = 4);
+
+	[] (Conception_ready | Conception_running | Conception_finished | RedactionDoc_ready | RedactionDoc_running | RedactionDoc_finished | Development_ready | Development_running | Development_finished | RedactionTest_ready | RedactionTest_running | RedactionTest_finished | Conception_running) ;
+	[] (Developpement_running | Developpement_finished);
+

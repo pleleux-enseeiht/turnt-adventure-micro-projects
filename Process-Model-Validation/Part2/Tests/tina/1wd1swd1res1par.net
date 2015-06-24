@@ -1,0 +1,46 @@
+	tr 1wd1swd1res1par_finish [0,10] 1wd1swd1res1par_running*1 WD_finished?1 ->  1wd1swd1res1par_finished*1
+	tr 1wd1swd1res1par_beginOnTime [0,0] 1wd1swd1res1par_initial*1 1wd1swd1res1par_running?1 ->  1wd1swd1res1par_onTime*1
+	tr 1wd1swd1res1par_isTooEarly [0,0] 1wd1swd1res1par_initial*1 1wd1swd1res1par_finished?1 ->  1wd1swd1res1par_tooEarly*1
+	tr 1wd1swd1res1par_isTooLate [10,10] 1wd1swd1res1par_onTime*1 1wd1swd1res1par_running?1 ->  1wd1swd1res1par_tooLate*1
+	tr WD_start [0,0] WD_ready*1 machine*5 ->  WD_started*1 WD_running*1 WD_initial*1 SWD_ready*1 WD_machine_internResource*5
+	tr WD_finish [0,5] WD_running*1 SWD_finished?1 WD_machine_internResource*5 ->  WD_finished*1 machine*5
+	tr WD_beginOnTime [0,0] WD_initial*1 WD_started?1 ->  WD_onTime*1
+	tr WD_isTooEarly [0,0] WD_initial*1 WD_finished?1 ->  WD_tooEarly*1
+	tr WD_isTooLate [5,5] WD_onTime*1 WD_started?1 WD_finished?-1 ->  WD_tooLate*1
+	tr WD_break [0,w[ WD_running*1 ->  WD_inBreak*1 machine*5
+	tr WD_stopBreak [0,w[ WD_inBreak*1 machine*5 ->  WD_running*1
+	tr SWD_start [0,0] SWD_ready*1 WD_machine_internResource*3 ->  SWD_started*1 SWD_running*1 SWD_initial*1 machineswd_internResource*3
+	tr SWD_finish [0,3] SWD_running*1 WD_inBreak?-1 machineswd_internResource*3 ->  SWD_finished*1 WD_machine_internResource*3
+	tr SWD_beginOnTime [0,0] SWD_initial*1 SWD_started?1 ->  SWD_onTime*1
+	tr SWD_isTooEarly [0,0] SWD_initial*1 SWD_finished?1 ->  SWD_tooEarly*1
+	tr SWD_isTooLate [3,3] SWD_onTime*1 SWD_started?1 SWD_finished?-1 ->  SWD_tooLate*1
+	tr SWD_break [0,w[ SWD_running*1 ->  SWD_inBreak*1 WD_machine_internResource*3
+	tr SWD_stopBreak [0,w[ SWD_inBreak*1 WD_machine_internResource*3 ->  SWD_running*1
+	pl 1wd1swd1res1par_running (1)
+	pl 1wd1swd1res1par_finished (0)
+	pl 1wd1swd1res1par_initial (1)
+	pl 1wd1swd1res1par_onTime (0)
+	pl 1wd1swd1res1par_tooEarly (0)
+	pl 1wd1swd1res1par_tooLate (0)
+	pl WD_ready (1)
+	pl WD_started (0)
+	pl WD_running (0)
+	pl WD_finished (0)
+	pl WD_initial (0)
+	pl WD_onTime (0)
+	pl WD_tooEarly (0)
+	pl WD_tooLate (0)
+	pl WD_inBreak (0)
+	pl SWD_ready (0)
+	pl SWD_started (0)
+	pl SWD_running (0)
+	pl SWD_finished (0)
+	pl SWD_initial (0)
+	pl SWD_onTime (0)
+	pl SWD_tooEarly (0)
+	pl SWD_tooLate (0)
+	pl SWD_inBreak (0)
+	pl machine (10)
+	pl WD_machine_internResource (0)
+	pl machineswd_internResource (0)
+	net 1wd1swd1res1par

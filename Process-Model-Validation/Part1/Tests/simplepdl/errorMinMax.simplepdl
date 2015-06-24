@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl" name="maxMin" min_time="12" max_time="15">
+  <processElements xsi:type="simplepdl:WorkDefinition" min_time="15" max_time="12" name="Conception"/>
+</simplepdl:Process>

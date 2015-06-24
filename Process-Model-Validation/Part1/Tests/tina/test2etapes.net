@@ -1,0 +1,40 @@
+	tr test2etapes_finish [29,29] test2etapes_running*1 Developpement_finished?1 RédactionTests_finished?1 ->  test2etapes_finished*1
+	tr test2etapes_beginOnTime [22,22] test2etapes_initial*1 test2etapes_running?1 ->  test2etapes_onTime*1
+	tr test2etapes_isTooEarly [0,0] test2etapes_initial*1 test2etapes_finished?1 ->  test2etapes_tooEarly*1
+	tr test2etapes_isTooLate [0,0] test2etapes_onTime*1 test2etapes_running?1 ->  test2etapes_tooLate*1
+	tr Developpement_start [0,0] Developpement_ready*1 developpeur*2 machine*3 ->  Developpement_started*1 Developpement_running*1 Developpement_initial*1
+	tr Developpement_finish [14,14] Developpement_running*1 ->  Developpement_finished*1 developpeur*2 machine*3
+	tr Developpement_beginOnTime [12,12] Developpement_initial*1 Developpement_running?1 ->  Developpement_onTime*1
+	tr Developpement_isTooEarly [0,0] Developpement_initial*1 Developpement_finished?1 ->  Developpement_tooEarly*1
+	tr Developpement_isTooLate [0,0] Developpement_onTime*1 Developpement_running?1 ->  Developpement_tooLate*1
+	tr RédactionTests_start [0,0] Developpement_started?1 RédactionTests_ready*1 testeur*1 machine*2 ->  RédactionTests_started*1 RédactionTests_running*1 RédactionTests_initial*1
+	tr RédactionTests_finish [15,15] Developpement_finished?1 RédactionTests_running*1 ->  RédactionTests_finished*1 testeur*1 machine*2
+	tr RédactionTests_beginOnTime [10,10] RédactionTests_initial*1 RédactionTests_running?1 ->  RédactionTests_onTime*1
+	tr RédactionTests_isTooEarly [0,0] RédactionTests_initial*1 RédactionTests_finished?1 ->  RédactionTests_tooEarly*1
+	tr RédactionTests_isTooLate [0,0] RédactionTests_onTime*1 RédactionTests_running?1 ->  RédactionTests_tooLate*1
+	pl test2etapes_running (1)
+	pl test2etapes_finished (0)
+	pl test2etapes_initial (1)
+	pl test2etapes_onTime (0)
+	pl test2etapes_tooEarly (0)
+	pl test2etapes_tooLate (0)
+	pl Developpement_ready (1)
+	pl Developpement_started (0)
+	pl Developpement_running (0)
+	pl Developpement_finished (0)
+	pl Developpement_initial (0)
+	pl Developpement_onTime (0)
+	pl Developpement_tooEarly (0)
+	pl Developpement_tooLate (0)
+	pl RédactionTests_ready (1)
+	pl RédactionTests_started (0)
+	pl RédactionTests_running (0)
+	pl RédactionTests_finished (0)
+	pl RédactionTests_initial (0)
+	pl RédactionTests_onTime (0)
+	pl RédactionTests_tooEarly (0)
+	pl RédactionTests_tooLate (0)
+	pl developpeur (2)
+	pl machine (4)
+	pl testeur (2)
+	net test2etapes

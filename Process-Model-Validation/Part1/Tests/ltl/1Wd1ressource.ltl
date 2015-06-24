@@ -1,0 +1,28 @@
+# Generated ltl file (1Wd1ressource)
+
+############################
+# Definitions d'operations #
+############################
+prefix ! p = - p;			# Negation
+infix p & q = p /\ q;		# And
+infix p | q = p \/ q;		# Or
+infix q suit p = [](p => <> q); # Sequence
+op finished =  Conception_finished & 1Wd1ressource_finished;
+#########################
+# Proprietes a verifier #
+#########################
+### Partie I
+## General
+	finished => (<> ([] finished));
+	[] ! finished; # non accessible
+	[] ! (1Wd1ressource_finished & !Conception_finished);
+## Ressources
+	[] (Concepteur <= 4) ;
+## Regles sur les WorkSequence
+
+# Restitution des ressources
+	finished => (Concepteur = 4);
+
+	[] (Conception_ready | Conception_running | Conception_finished | Conception_running) ;
+	[] (1Wd1ressource_running | 1Wd1ressource_finished);
+

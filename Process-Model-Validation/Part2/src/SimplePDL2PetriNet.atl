@@ -1,0 +1,705 @@
+-- @path simplepdl=/Models/SimplePDL.ecore
+-- @path petrinet=/Models/PetriNet.ecore
+
+module SimplePDL2PetriNet;
+create OUT: petrinet from  IN: simplepdl;
+
+-- Obtenir le processus qui contient ce process element.
+-- Remarque: Ce helper ne serait pas utile si une r�f�rence opposite
+-- avait �t� plac�e entre Process et ProcessElement
+helper context simplepdl!ProcessElement
+def: getProcess(): simplepdl!Process =
+	simplepdl!Process.allInstances()
+		->select(p | p.processElements->includes(self))
+		->asSequence()->first();
+
+-- Obtenir les paramètre qui accèdent à cette resources.
+-- Remarque: Ce helper ne serait pas utile si une r�f�rence opposite
+-- avait �t� plac�e entre Process et ProcessElement
+helper context simplepdl!Resource
+def: getProcess(): simplepdl!Process =
+	simplepdl!Process.allInstances()
+		->select(p | p.resources->includes(self))
+		->asSequence()->first();
+
+-- Traduire un Process en un PetriNet de m�me nom
+rule Process2PetriNet {
+	from p: simplepdl!Process
+	to pn: petrinet!PetriNet (name <- p.name),
+	-- PLACES d'une WorkDefinition
+		p_running: petrinet!Place(
+				name <- p.name + '_running',
+				marking <- 1,
+				net <- p),
+		p_finished: petrinet!Place(
+				name <- p.name + '_finished',
+				marking <- 0,
+				net <- p),
+		-- TRANSITION d'une WorkDefinition				
+		t_finish: petrinet!Transition(
+				name <- p.name + '_finish',
+				min_time <- p.min_time,
+				max_time <- p.max_time,
+				net <- p),
+		-- ARCS d'une WorkDefinition				
+		a_rf: petrinet!Arc(
+				source <- p_running,
+				target <- t_finish,
+				weight <- 1,
+				kind <- #normal,
+				net <- p),
+		a_ff: petrinet!Arc(
+				source <- t_finish,
+				target <- p_finished,
+				weight <- 1,
+				kind <- #normal,
+				net <- p),
+		-- Prise en compte du temps
+			-- Places
+			p_initial: petrinet!Place(
+					name <- p.name + '_initial',
+					marking <- 1,
+					net <- p),
+			p_onTime: petrinet!Place(
+					name <- p.name + '_onTime',
+					marking <- 0,
+					net <- p),
+			p_tooEarly: petrinet!Place(
+					name <- p.name + '_tooEarly',
+					marking <- 0,
+					net <- p),
+			p_tooLate: petrinet!Place(
+					name <- p.name + '_tooLate',
+					marking <- 0,
+					net <- p),
+			-- transitions
+			t_onTime: petrinet!Transition(
+					name <- p.name + '_beginOnTime',
+					min_time <- p.min_time,
+					max_time <- p.min_time,
+					net <- p),
+			t_tooEarly: petrinet!Transition(
+					name <- p.name + '_isTooEarly',
+					min_time <- 0,
+					max_time <- 0,
+					net <- p),
+			t_tooLate: petrinet!Transition(
+					name <- p.name + '_isTooLate',
+					min_time <- p.max_time-p.min_time,
+					max_time <- p.max_time-p.min_time,
+					net <- p),
+			-- arcs
+			a_itE: petrinet!Arc(
+				source <- p_initial,
+				target <- t_tooEarly,
+				weight <- 1,
+				kind <- #normal,
+				net <- p),
+			a_tEtE: petrinet!Arc(
+				source <- t_tooEarly,
+				target <- p_tooEarly,
+				weight <- 1,
+				kind <- #normal,
+				net <- p),
+			a_ioT: petrinet!Arc(
+				source <- p_initial,
+				target <- t_onTime,
+				weight <- 1,
+				kind <- #normal,
+				net <- p),
+			a_oToT: petrinet!Arc(
+				source <- t_onTime,
+				target <- p_onTime,
+				weight <- 1,
+				kind <- #normal,
+				net <- p),
+			a_oTtL: petrinet!Arc(
+				source <- p_onTime,
+				target <- t_tooLate,
+				weight <- 1,
+				kind <- #normal,
+				net <- p),
+			a_tLtL: petrinet!Arc(
+				source <- t_tooLate,
+				target <- p_tooLate,
+				weight <- 1,
+				kind <- #normal,
+				net <- p),
+			a_roT: petrinet!Arc(
+				source <- p_running,
+				target <- t_onTime,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- p),
+			a_rtL: petrinet!Arc(
+				source <- p_running,
+				target <- t_tooLate,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- p),
+			a_ftE: petrinet!Arc(
+				source <- p_finished,
+				target <- t_tooEarly,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- p)
+		
+}
+
+-- Traduire une WorkDefinition en un arc sur le réseau de Petri
+rule WorkSequence2PetriNet {
+	from ws: simplepdl!WorkSequence
+	to 
+		a_ws: petrinet!Arc (
+			kind <- #read_arc,
+			weight <- 1,
+			source <- if ((ws.linkType = #finishToStart) or (ws.linkType = #finishToFinish))
+							then thisModule.resolveTemp(ws.predecessor, 'p_finished')
+					  else thisModule.resolveTemp(ws.predecessor, 'p_started')
+					  endif,
+			target <- if ((ws.linkType = #finishToStart) or (ws.linkType = #startToStart))
+							then thisModule.resolveTemp(ws.successor , 't_start')
+					  else thisModule.resolveTemp(ws.successor , 't_finish')
+					  endif,
+			net <- ws.getProcess())
+}
+
+-- Traduire une WorkDefinition en un motif sur le r�seau de Petri
+rule WorkDefinition2PetriNet {
+	from wd: simplepdl!WorkDefinition
+	to
+		-- PLACES d'une WorkDefinition
+		p_ready: petrinet!Place(
+				name <- wd.name + '_ready',
+				marking <- 1,
+				net <- wd.getProcess()),
+		p_started: petrinet!Place(
+				name <- wd.name + '_started',
+				marking <- 0,
+				net <- wd.getProcess()),
+		p_running: petrinet!Place(
+				name <- wd.name + '_running',
+				marking <- 0,
+				net <- wd.getProcess()),
+		p_finished: petrinet!Place(
+				name <- wd.name + '_finished',
+				marking <- 0,
+				net <- wd.getProcess()),
+		-- TRANSITION d'une WorkDefinition				
+		t_start: petrinet!Transition(
+				name <- wd.name + '_start',
+				min_time <- 0,
+				max_time <- 0,
+				net <- wd.getProcess()),
+		t_finish: petrinet!Transition(
+				name <- wd.name + '_finish',
+				min_time <- wd.min_time,
+				max_time <- wd.max_time,
+				net <- wd.getProcess()),
+		-- ARCS d'une WorkDefinition				
+		a_rs: petrinet!Arc(
+				source <- p_ready,
+				target <- t_start,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_ss: petrinet!Arc(
+				source <- t_start,
+				target <- p_started,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_sr: petrinet!Arc(
+				source <- t_start,
+				target <- p_running,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_rf: petrinet!Arc(
+				source <- p_running,
+				target <- t_finish,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_ff: petrinet!Arc(
+				source <- t_finish,
+				target <- p_finished,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		-- Prise en compte du temps
+			-- Places
+			p_initial: petrinet!Place(
+					name <- wd.name + '_initial',
+					marking <- 0,
+					net <- wd.getProcess()),
+			p_onTime: petrinet!Place(
+					name <- wd.name + '_onTime',
+					marking <- 0,
+					net <- wd.getProcess()),
+			p_tooEarly: petrinet!Place(
+					name <- wd.name + '_tooEarly',
+					marking <- 0,
+					net <- wd.getProcess()),
+			p_tooLate: petrinet!Place(
+					name <- wd.name + '_tooLate',
+					marking <- 0,
+					net <- wd.getProcess()),
+			-- transitions
+			t_onTime: petrinet!Transition(
+					name <- wd.name + '_beginOnTime',
+					min_time <- wd.min_time,
+					max_time <- wd.min_time,
+					net <- wd.getProcess()),
+			t_tooEarly: petrinet!Transition(
+					name <- wd.name + '_isTooEarly',
+					min_time <- 0,
+					max_time <- 0,
+					net <- wd.getProcess()),
+			t_tooLate: petrinet!Transition(
+					name <- wd.name + '_isTooLate',
+					min_time <- wd.max_time-wd.min_time,
+					max_time <- wd.max_time-wd.min_time,
+					net <- wd.getProcess()),
+			-- arcs
+			a_si: petrinet!Arc(
+				source <- t_start,
+				target <- p_initial,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+			a_itE: petrinet!Arc(
+				source <- p_initial,
+				target <- t_tooEarly,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+			a_tEtE: petrinet!Arc(
+				source <- t_tooEarly,
+				target <- p_tooEarly,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+			a_ioT: petrinet!Arc(
+				source <- p_initial,
+				target <- t_onTime,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+			a_oToT: petrinet!Arc(
+				source <- t_onTime,
+				target <- p_onTime,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+			a_oTtL: petrinet!Arc(
+				source <- p_onTime,
+				target <- t_tooLate,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+			a_tLtL: petrinet!Arc(
+				source <- t_tooLate,
+				target <- p_tooLate,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+			a_roT: petrinet!Arc(
+				source <- p_started,
+				target <- t_onTime,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- wd.getProcess()),
+			a_rtL: petrinet!Arc(
+				source <- p_started,
+				target <- t_tooLate,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- wd.getProcess()),
+			a_ftE: petrinet!Arc(
+				source <- p_finished,
+				target <- t_tooEarly,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- wd.getProcess()),
+			a_ftL: petrinet!Arc(
+				source <- p_finished,
+				target <- t_tooLate,
+				weight <- 1,
+				kind <- #inhibitor,
+				net <- wd.getProcess()),
+			a_fp_f: petrinet!Arc(
+				source <- p_finished,
+				target <- thisModule.resolveTemp(wd.getProcess(), 't_finish'),
+				weight <- 1,
+				kind <- #read_arc,
+				net <- wd.getProcess()),
+			--Prise en compte de la pause
+			p_inBreak: petrinet!Place(
+				name <- wd.name + '_inBreak',
+				marking <- 0,
+				net <- wd.getProcess()),
+			t_break: petrinet!Transition(
+				name <- wd.name + '_break',
+				min_time <- 0,
+				max_time <- -1,
+				net <- wd.getProcess()),
+			t_stopBreak: petrinet!Transition(
+				name <- wd.name + '_stopBreak',
+				min_time <- 0,
+				max_time <- -1,
+				net <- wd.getProcess()),
+			a_rb: petrinet!Arc(
+				source <- p_running,
+				target <- t_break,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+			a_biB: petrinet!Arc(
+				source <- t_break,
+				target <- p_inBreak,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+			a_iBsB: petrinet!Arc(
+				source <- p_inBreak,
+				target <- t_stopBreak,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+			a_sBr: petrinet!Arc(
+				source <- t_stopBreak,
+				target <- p_running,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess())
+}
+
+-- Traduire une WorkDefinition en un motif sur le r�seau de Petri
+rule SubWorkDefinition2PetriNet {
+	from swd: simplepdl!SubWorkDefinition
+	to
+		-- PLACES d'une SubWorkDefinition
+		p_ready: petrinet!Place(
+				name <- swd.name + '_ready',
+				marking <- 0,
+				net <- swd.getProcess()),
+		p_started: petrinet!Place(
+				name <- swd.name + '_started',
+				marking <- 0,
+				net <- swd.getProcess()),
+		p_running: petrinet!Place(
+				name <- swd.name + '_running',
+				marking <- 0,
+				net <- swd.getProcess()),
+		p_finished: petrinet!Place(
+				name <- swd.name + '_finished',
+				marking <- 0,
+				net <- swd.getProcess()),
+		-- TRANSITION d'une WorkDefinition				
+		t_start: petrinet!Transition(
+				name <- swd.name + '_start',
+				min_time <- 0,
+				max_time <- 0,
+				net <- swd.getProcess()),
+		t_finish: petrinet!Transition(
+				name <- swd.name + '_finish',
+				min_time <- swd.min_time,
+				max_time <- swd.max_time,
+				net <- swd.getProcess()),
+		-- ARCS d'une WorkDefinition				
+		a_rs: petrinet!Arc(
+				source <- p_ready,
+				target <- t_start,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+		a_ss: petrinet!Arc(
+				source <- t_start,
+				target <- p_started,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+		a_sr: petrinet!Arc(
+				source <- t_start,
+				target <- p_running,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+		a_rf: petrinet!Arc(
+				source <- p_running,
+				target <- t_finish,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+		a_ff: petrinet!Arc(
+				source <- t_finish,
+				target <- p_finished,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+		-- Prise en compte du temps
+			-- Places
+			p_initial: petrinet!Place(
+					name <- swd.name + '_initial',
+					marking <- 0,
+					net <- swd.getProcess()),
+			p_onTime: petrinet!Place(
+					name <- swd.name + '_onTime',
+					marking <- 0,
+					net <- swd.getProcess()),
+			p_tooEarly: petrinet!Place(
+					name <- swd.name + '_tooEarly',
+					marking <- 0,
+					net <- swd.getProcess()),
+			p_tooLate: petrinet!Place(
+					name <- swd.name + '_tooLate',
+					marking <- 0,
+					net <- swd.getProcess()),
+			-- transitions
+			t_onTime: petrinet!Transition(
+					name <- swd.name + '_beginOnTime',
+					min_time <- swd.min_time,
+					max_time <- swd.min_time,
+					net <- swd.getProcess()),
+			t_tooEarly: petrinet!Transition(
+					name <- swd.name + '_isTooEarly',
+					min_time <- 0,
+					max_time <- 0,
+					net <- swd.getProcess()),
+			t_tooLate: petrinet!Transition(
+					name <- swd.name + '_isTooLate',
+					min_time <- swd.max_time-swd.min_time,
+					max_time <- swd.max_time-swd.min_time,
+					net <- swd.getProcess()),
+			-- arcs
+			a_si: petrinet!Arc(
+				source <- t_start,
+				target <- p_initial,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_itE: petrinet!Arc(
+				source <- p_initial,
+				target <- t_tooEarly,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_tEtE: petrinet!Arc(
+				source <- t_tooEarly,
+				target <- p_tooEarly,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_ioT: petrinet!Arc(
+				source <- p_initial,
+				target <- t_onTime,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_oToT: petrinet!Arc(
+				source <- t_onTime,
+				target <- p_onTime,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_oTtL: petrinet!Arc(
+				source <- p_onTime,
+				target <- t_tooLate,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_tLtL: petrinet!Arc(
+				source <- t_tooLate,
+				target <- p_tooLate,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_roT: petrinet!Arc(
+				source <- p_started,
+				target <- t_onTime,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- swd.getProcess()),
+			a_rtL: petrinet!Arc(
+				source <- p_started,
+				target <- t_tooLate,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- swd.getProcess()),
+			a_ftL: petrinet!Arc(
+				source <- p_finished,
+				target <- t_tooLate,
+				weight <- 1,
+				kind <- #inhibitor,
+				net <- swd.getProcess()),
+			a_ftE: petrinet!Arc(
+				source <- p_finished,
+				target <- t_tooEarly,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- swd.getProcess()),
+			-- Prise en compte de la nature de child
+			a_p_sr: petrinet!Arc(
+				source <- thisModule.resolveTemp(swd.parent, 't_start'),
+				target <- p_ready,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_fp_f: petrinet!Arc(
+				source <- p_finished,
+				target <- thisModule.resolveTemp(swd.parent, 't_finish'),
+				weight <- 1,
+				kind <- #read_arc,
+				net <- swd.getProcess()),
+			-- Prise en compte de la pause
+			p_inBreak: petrinet!Place(
+				name <- swd.name + '_inBreak',
+				marking <- 0,
+				net <- swd.getProcess()),
+			t_break: petrinet!Transition(
+				name <- swd.name + '_break',
+				min_time <- 0,
+				max_time <- -1,
+				net <- swd.getProcess()),
+			t_stopBreak: petrinet!Transition(
+				name <- swd.name + '_stopBreak',
+				min_time <- 0,
+				max_time <- -1,
+				net <- swd.getProcess()),
+			a_rb: petrinet!Arc(
+				source <- p_running,
+				target <- t_break,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_biB: petrinet!Arc(
+				source <- t_break,
+				target <- p_inBreak,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_iBsB: petrinet!Arc(
+				source <- p_inBreak,
+				target <- t_stopBreak,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_sBr: petrinet!Arc(
+				source <- t_stopBreak,
+				target <- p_running,
+				weight <- 1,
+				kind <- #normal,
+				net <- swd.getProcess()),
+			a_iBf: petrinet!Arc(
+				source <- thisModule.resolveTemp(swd.parent, 'p_inBreak'),
+				target <- t_finish,
+				weight <- 1,
+				kind <- #inhibitor,
+				net <- swd.getProcess())
+}
+
+--Prise en compte des resources
+
+rule Resource2PetriNet {
+	from res: simplepdl!Resource
+	to
+		p_resource: petrinet!Place(
+				name <- res.name,
+				marking <- res.marking,
+				net <- res.getProcess())
+}
+
+rule ParameterWD2PetriNet {
+	from par: simplepdl!ParameterWD
+	to
+		-- Arcs d'un Paramètre
+		a_fr: petrinet!Arc(
+				source <- thisModule.resolveTemp(par.workDefinition, 't_finish'),
+				target <- thisModule.resolveTemp(par.resource, 'p_resource'),
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess()),
+		a_rs: petrinet!Arc(
+				source <- thisModule.resolveTemp(par.resource, 'p_resource'),
+				target <- thisModule.resolveTemp(par.workDefinition, 't_start'),
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess()),
+		--Prise en compte des enfants : internResources
+		p_iR: petrinet!Place(
+				name <- par.name + '_internResource',
+				marking <- 0,
+				net <- par.getProcess()),
+		a_riR: petrinet!Arc(
+				source <- thisModule.resolveTemp(par.workDefinition, 't_start'),
+				target <- p_iR,
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess()),
+		a_iRs: petrinet!Arc(
+				source <- p_iR,
+				target <- thisModule.resolveTemp(par.workDefinition, 't_finish'),
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess()),
+		a_rsB: petrinet!Arc(
+				source <- thisModule.resolveTemp(par.resource, 'p_resource'),
+				target <- thisModule.resolveTemp(par.workDefinition, 't_stopBreak'),
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess()),
+		a_br: petrinet!Arc(
+				source <- thisModule.resolveTemp(par.workDefinition, 't_break'),
+				target <- thisModule.resolveTemp(par.resource, 'p_resource'),
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess())
+}
+
+rule ParameterSWD2PetriNet {
+	from par: simplepdl!ParameterSWD
+	to
+		-- Arcs d'un Paramètre
+		a_fr: petrinet!Arc(
+				source <- thisModule.resolveTemp(par.subWorkDefinition, 't_finish'),
+				target <- thisModule.resolveTemp(par.internResource, 'p_iR'),
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess()),
+		a_rs: petrinet!Arc(
+				source <- thisModule.resolveTemp(par.internResource, 'p_iR'),
+				target <- thisModule.resolveTemp(par.subWorkDefinition, 't_start'),
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess()),
+		--Prise en compte des enfants : internResources
+		p_iR: petrinet!Place(
+				name <- par.name + '_internResource',
+				marking <- 0,
+				net <- par.getProcess()),
+		a_riR: petrinet!Arc(
+				source <- thisModule.resolveTemp(par.subWorkDefinition, 't_start'),
+				target <- p_iR,
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess()),
+		a_iRs: petrinet!Arc(
+				source <- p_iR,
+				target <- thisModule.resolveTemp(par.subWorkDefinition, 't_finish'),
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess()),
+		a_rsB: petrinet!Arc(
+				source <- thisModule.resolveTemp(par.internResource, 'p_iR'),
+				target <- thisModule.resolveTemp(par.subWorkDefinition, 't_stopBreak'),
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess()),
+		a_br: petrinet!Arc(
+				source <- thisModule.resolveTemp(par.subWorkDefinition, 't_break'),
+				target <- thisModule.resolveTemp(par.internResource, 'p_iR'),
+				weight <- par.nbNeeds,
+				kind <- #normal,
+				net <- par.getProcess())
+}

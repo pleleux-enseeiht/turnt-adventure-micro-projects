@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl" name="developpement" min_time="20" max_time="50">
+  <processElements xsi:type="simplepdl:WorkDefinition" name="Conception" min_time="10" max_time="16" linksToSuccessors="//@processElements.12 //@processElements.13 //@processElements.14 //@processElements.15" needsWD="//@processElements.4 //@processElements.5"/>
+  <processElements xsi:type="simplepdl:WorkDefinition" name="RedactionDoc" min_time="8" max_time="12" linksToPredecessors="//@processElements.12 //@processElements.13" needsWD="//@processElements.10 //@processElements.11"/>
+  <processElements xsi:type="simplepdl:WorkDefinition" name="Development" min_time="12" max_time="14" linksToPredecessors="//@processElements.14" linksToSuccessors="//@processElements.16" needsWD="//@processElements.8 //@processElements.9"/>
+  <processElements xsi:type="simplepdl:WorkDefinition" name="RedactionTest" min_time="10" max_time="12" linksToPredecessors="//@processElements.15 //@processElements.16" needsWD="//@processElements.6 //@processElements.7"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="Conception_concepteur" nbNeeds="2" resource="//@resources.0" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="Conception_machine" nbNeeds="2" resource="//@resources.4" workDefinition="//@processElements.0"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="RedactionTest_testeur" nbNeeds="1" resource="//@resources.3" workDefinition="//@processElements.3"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="RedactionTest_machine" nbNeeds="2" resource="//@resources.4" workDefinition="//@processElements.3"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="Development_developpeur" nbNeeds="2" resource="//@resources.2" workDefinition="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="Development_machine" nbNeeds="3" resource="//@resources.4" workDefinition="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="RedactionDoc_redacteur" nbNeeds="1" resource="//@resources.1" workDefinition="//@processElements.1"/>
+  <processElements xsi:type="simplepdl:ParameterWD" name="RedactionDoc_machine" nbNeeds="1" resource="//@resources.4" workDefinition="//@processElements.1"/>
+  <processElements xsi:type="simplepdl:WorkSequence" predecessor="//@processElements.0" successor="//@processElements.1"/>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToFinish" predecessor="//@processElements.0" successor="//@processElements.1"/>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToStart" predecessor="//@processElements.0" successor="//@processElements.2"/>
+  <processElements xsi:type="simplepdl:WorkSequence" predecessor="//@processElements.0" successor="//@processElements.3"/>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToFinish" predecessor="//@processElements.2" successor="//@processElements.3"/>
+  <resources name="concepteur" marking="3"/>
+  <resources name="redacteur" marking="1"/>
+  <resources name="developpeur" marking="2"/>
+  <resources name="testeur" marking="2"/>
+  <resources name="machine" marking="4"/>
+</simplepdl:Process>

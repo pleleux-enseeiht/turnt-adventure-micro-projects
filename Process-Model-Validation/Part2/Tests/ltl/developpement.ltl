@@ -1,0 +1,63 @@
+# Generated ltl file (developpement)
+
+############################
+# Definitions d'operations #
+############################
+prefix ! p = - p;			# Negation
+infix p & q = p /\ q;		# And
+infix p | q = p \/ q;		# Or
+infix q suit p = [](p => <> q); # Sequence
+op finished =  Conception_finished &  RedactionDoc_finished &  Development_finished &  RedactionTest_finished & developpement_finished;
+#########################
+# Proprietes a verifier #
+#########################
+### Partie I
+## General
+	[] (dead => finished);
+	finished => (<> ([] finished));
+	[] ! finished; # non accessible
+	[] ! (developpement_finished & !Conception_finished);
+	[] ! (developpement_finished & !RedactionDoc_finished);
+	[] ! (developpement_finished & !Development_finished);
+	[] ! (developpement_finished & !RedactionTest_finished);
+## Ressources
+	[] (concepteur <= 3) ;
+	[] (redacteur <= 1) ;
+	[] (developpeur <= 2) ;
+	[] (testeur <= 2) ;
+	[] (machine <= 4) ;
+## Regles sur les WorkSequence
+	finished => ([] (RedactionDoc_started => (<> Conception_finished)));
+	finished => ([] (RedactionDoc_started => (<> Conception_finished)));
+	finished => ([] (Development_started => (<> Conception_finished)));
+	finished => ([] (RedactionTest_started => (<> Conception_finished)));
+	finished => ([] (RedactionTest_started => (<> Development_finished)));
+
+# Restitution des ressources
+	finished => (concepteur = 3);
+	finished => (redacteur = 1);
+	finished => (developpeur = 2);
+	finished => (testeur = 2);
+	finished => (machine = 4);
+
+### Partie II
+
+## Decomposition d'une activite
+## Gestion plus fine des ressources
+# Ressource interne <= Ressource disponible
+	[] (Conception_concepteur_internResource <= 3);
+	[] (Conception_machine_internResource <= 4);
+	[] (RedactionTest_testeur_internResource <= 2);
+	[] (RedactionTest_machine_internResource <= 4);
+	[] (Development_developpeur_internResource <= 2);
+	[] (Development_machine_internResource <= 4);
+	[] (RedactionDoc_redacteur_internResource <= 1);
+	[] (RedactionDoc_machine_internResource <= 4);
+	[] (Conception_ready | Conception_running | Conception_inBreak | Conception_finished | RedactionDoc_ready | RedactionDoc_running | RedactionDoc_inBreak | RedactionDoc_finished | Development_ready | Development_running | Development_inBreak | Development_finished | RedactionTest_ready | RedactionTest_running | RedactionTest_inBreak | RedactionTest_finished | Conception_running) ;
+	[] (developpement_running | developpement_finished);
+# p_running suit p_inBreak
+	finished => (Conception_inBreak => <> Conception_running);
+	finished => (RedactionDoc_inBreak => <> RedactionDoc_running);
+	finished => (Development_inBreak => <> Development_running);
+	finished => (RedactionTest_inBreak => <> RedactionTest_running);
+

@@ -1,0 +1,85 @@
+grammar fr.enseeiht.PDLP with org.eclipse.xtext.common.Terminals
+
+generate pDLP "http://www.enseeiht.fr/PDLP"
+
+Process :
+	'process' name=ID 
+		'[' min_time=INT
+		',' max_time=INT
+		'] {'
+	    	processElements+=ProcessElement*
+		'}' ('('resources+=Resource*')')?
+	;
+
+ProcessElement :
+	Guidance
+	|WorkSequence
+	|Activities
+	|Parameter
+	;
+	
+Guidance:
+	text=STRING
+	('to' element+=[ProcessElement])?
+	;
+	
+WorkSequence :
+	'ws' (name=ID)?
+		linkType=WorkSequenceType
+		'from' predecessor=[Activities]
+		'to' successor=[Activities]
+	;
+
+enum WorkSequenceType :
+	start2start = 's2s'
+	| finish2start = 'f2s'
+	| start2finish = 's2f'
+	| finish2finish = 'f2f'
+	;
+
+Activities :
+	WorkDefinition
+	|SubWorkDefinition
+;
+
+WorkDefinition :
+	'wd' name=ID
+		('parent of' children+=[SubWorkDefinition]*)?
+		'[' min_time=INT
+		',' max_time=INT
+		']' ('(' needsWD+=ParameterWD*')')?
+		('links to predecessors : 'linksToPredecessors+=[WorkSequence]*)?
+		('links to successors : 'linksToSuccessors+=[WorkSequence]*)?
+	;
+	
+SubWorkDefinition :
+	'swd' name=ID
+		('parent of' children+=[SubWorkDefinition]*)?
+		'child of' parent = [Activities]
+		'[' min_time=INT
+		',' max_time=INT
+		']' ('(' needsSWD+=Parameter*')')?
+		('links to predecessors : 'linksToPredecessors+=[WorkSequence]*)?
+		('links to successors : 'linksToSuccessors+=[WorkSequence]*)?
+	;
+	
+Parameter :
+	ParameterWD
+	|ParameterSWD
+;
+
+ParameterWD:
+	'parWD' name=ID':'nbNeeds = INT
+	'of' resource = [Resource]
+	('used by' workDefinition = [WorkDefinition])?
+;
+
+ParameterSWD:
+	'parSWD' name=ID':'nbNeeds = INT
+	'of' internResource = [Parameter]
+	('used by' subWorkDefinition = [SubWorkDefinition])?
+;
+
+Resource:
+	'res' name=ID':'marking=INT
+;
